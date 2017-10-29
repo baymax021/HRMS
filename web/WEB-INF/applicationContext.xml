@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-lazy-init="true"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <!--开启注解-->
+    <context:annotation-config/>
+
+    <!--配置扫描器-->
+    <context:component-scan base-package="com.bay"/>
+
+    <!--配置视图控制器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="viewResolver">
+        <property name="suffix" value=".jsp"/>
+        <property name="prefix" value="/page/"/>
+    </bean>
+
+    <!--静态资源放行-->
+    <mvc:annotation-driven/>
+    <mvc:resources mapping="/js/**" location="/js/"/>
+
+    <!--引用外部配置文件（数据库配置信息）-->
+    <context:property-placeholder location="/WEB-INF/jdbc.properties"/>
+    <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" name="dataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    <!--配置sqlSessionFactory-->
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory" name="sqlSessionFactory">
+        <!--数据源-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--配置sqlMapper自动扫描路径-->
+        <property name="mapperLocations" value="classpath:com/bay/mapper/*.xml"/>
+        <!--为POJO类起别名-->
+        <property name="typeAliasesPackage" value="com.bay.model"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" id="configurer">
+        <property name="basePackage" value="com.bay.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+</beans>

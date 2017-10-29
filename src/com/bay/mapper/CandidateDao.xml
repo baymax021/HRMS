@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bay.dao.CandidateDao">
+    <resultMap id="candidateMap" type="Candidate">
+        <id column="cid" property="cid" javaType="java.lang.Integer"/>
+        <result column="CAND_NAME" property="candName" javaType="String"/>
+        <result column="PASSWORD" property="password" javaType="String"/>
+        <result column="STATUS" property="status" javaType="String"/>
+        <!--<collection property="resumes" ofType="Resume"  resultMap="com.bay.dao.ResumeDao.resumeMap"/>-->
+        <!--<collection property="resumes" ofType="Resume" select="com.bay.dao.ResumeDao.resumeList" column="cid"/>-->
+    </resultMap>
+    <insert id="addCandidate" parameterType="Candidate">
+        <selectKey keyProperty="cid" order="BEFORE" resultType="java.lang.Integer">
+        SELECT HRMS.AA.nextval FROM dual
+        </selectKey>
+        INSERT INTO HRMS.CANDIDATE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="cid!=null">CID,</if>
+            <if test="candName!=null">cand_name,</if>
+            <if test="password != null">password,</if>
+            <if test="status!= null">status</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="cid!=null">#{cid},</if>
+            <if test="candName!=null">#{candName},</if>
+            <if test="password != null">#{password},</if>
+            <if test="status!= null">#{status}</if>
+        </trim>
+    </insert>
+    <select id="queryCandidate" parameterType="Candidate" resultMap="candidateMap">
+        SELECT * FROM HRMS.CANDIDATE
+        WHERE CAND_NAME = #{candName}
+        AND  PASSWORD = #{password}
+    </select>
+
+
+</mapper>

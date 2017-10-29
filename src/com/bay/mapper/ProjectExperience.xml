@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bay.dao.ProjectExperienceDao">
+    <resultMap id="projectExperienceMap" type="ProjectExperience">
+        <id column="pid" property="pid"/>
+        <result column="RESUME_ID" property="resumeId"/>
+        <result column="PROJECT_NAME" property="projectName"/>
+        <result column="PROJECT_DESCRIPTION" property="projectDescription"/>
+        <association property="resume" javaType="Resume" resultMap="com.bay.dao.ResumeDao.resumeMap"/>
+    </resultMap>
+    <insert id="addProjectExperience" parameterType="ProjectExperience">
+        <selectKey keyProperty="pid" resultType="java.lang.Integer" order="BEFORE">
+            SELECT HRMS.aa.nextval from dual
+        </selectKey>
+        INSERT INTO HRMS.PROJECT_EXPERIENCE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pid!=null">PID,</if>
+            <if test="resumeId!=null">RESUME_ID,</if>
+            <if test="projectName!=null">PROJECT_NAME,</if>
+            <if test="projectDescription!=null">PROJECT_DESCRIPTION</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pid!=null">#{pid},</if>
+            <if test="resumeId!=null">#{resumeId},</if>
+            <if test="projectName!=null">#{projectName},</if>
+            <if test="projectDescription!=null">#{projectDescription}</if>
+        </trim>
+    </insert>
+    <select id="queryProjectExperienceByResumeId" parameterType="Integer" resultMap="projectExperienceMap">
+        SELECT * FROM HRMS.PROJECT_EXPERIENCE WHERE RESUME_ID=#{resumeId}
+    </select>
+
+
+</mapper>

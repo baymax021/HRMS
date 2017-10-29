@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bay.dao.BasicInfoDao">
+    <resultMap id="basicInfoMap" type="BasicInfo">
+        <id column="bid" property="bid" javaType="java.lang.Integer"/>
+        <result column="RESUME_ID" property="resumeId" javaType="java.lang.Integer"/>
+        <result column="REAL_NAME" property="realName" javaType="String"/>
+        <result column="GENDER" property="gender" javaType="String"/>
+        <result column="DATE_OF_BIRTH" property="dateOfBirth" javaType="String"/>
+        <result column="PHONE" property="phone" javaType="String"/>
+        <result column="email" property="email" javaType="String"/>
+        <result column="address" property="address" javaType="String"/>
+        <result column="huji" property="huji" javaType="String"/>
+        <result column="SELF_EVALUATION" property="selfEvaluation" javaType="String"/>
+        <result column="IMAGE" property="image" javaType="String"/>
+        <association property="resume" javaType="Resume" resultMap="com.bay.dao.ResumeDao.resumeMap"/>
+    </resultMap>
+    <insert id="addBasicInfo" parameterType="BasicInfo">
+        <selectKey keyProperty="bid" resultType="java.lang.Integer" order="BEFORE">
+            SELECT HRMS.aa.nextval from dual
+        </selectKey>
+        INSERT INTO HRMS.BASIC_INFO
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="bid!=null">BID,</if>
+            <if test="resumeId!=null">RESUME_ID,</if>
+            <if test="realName != null">REAL_NAME,</if>
+            <if test="gender!= null">GENDER,</if>
+            <if test="dateOfBirth!= null">DATE_OF_BIRTH,</if>
+            <if test="phone!= null">phone,</if>
+            <if test="email!= null">email,</if>
+            <if test="address!= null">address,</if>
+            <if test="huji!= null">huji,</if>
+            <if test="selfEvaluation!= null">SELF_EVALUATION,</if>
+            <if test="image!= null">image</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="bid!=null">#{bid},</if>
+            <if test="resumeId!=null">#{resumeId},</if>
+            <if test="realName != null">#{realName},</if>
+            <if test="gender!= null">#{gender},</if>
+            <if test="dateOfBirth!= null">#{dateOfBirth},</if>
+            <if test="phone!= null">#{phone},</if>
+            <if test="email!= null">#{email},</if>
+            <if test="address!= null">#{address},</if>
+            <if test="huji!= null">#{huji},</if>
+            <if test="selfEvaluation!= null">#{selfEvaluation},</if>
+            <if test="image!= null">#{image}</if>
+        </trim>
+
+    </insert>
+    <select id="queryBasicInfoByResumeId" parameterType="Integer" resultMap="basicInfoMap">
+        SELECT * FROM HRMS.BASIC_INFO WHERE RESUME_ID=#{resumeId}
+    </select>
+
+
+
+</mapper>

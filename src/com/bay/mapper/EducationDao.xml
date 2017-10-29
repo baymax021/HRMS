@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bay.dao.EducationDao">
+    <resultMap id="educationMap" type="Education">
+        <id column="eid" property="eid" javaType="java.lang.Integer"/>
+        <result column="RESUME_ID" property="resumeId" javaType="java.lang.Integer"/>
+        <result column="SCHOOL" property="school"/>
+        <result column="MAJOR" property="major"/>
+        <result column="START_TIME" property="startTime"/>
+        <result column="END_TIME" property="endTime"/>
+        <result column="DEGREE" property="degree"/>
+        <association property="resume" javaType="Resume" resultMap="com.bay.dao.ResumeDao.resumeMap"/>
+    </resultMap>
+    <insert id="addEduByRid" parameterType="Education">
+        <selectKey keyProperty="eid" order="BEFORE" resultType="java.lang.Integer">
+            SELECT HRMS.aa.nextval from dual
+        </selectKey>
+        INSERT INTO HRMS.EDUCATION
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="eid!=null">EID,</if>
+            <if test="resumeId!=null">RESUME_ID,</if>
+            <if test="school!=null">school,</if>
+            <if test="major!=null">major,</if>
+            <if test="startTime!=null">START_TIME,</if>
+            <if test="endTime!=null">END_TIME,</if>
+            <if test="degree!=null">degree</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="eid!=null">#{eid},</if>
+            <if test="resumeId!=null">#{resumeId},</if>
+            <if test="school!=null">#{school},</if>
+            <if test="major!=null">#{major},</if>
+            <if test="startTime!=null">#{startTime},</if>
+            <if test="endTime!=null">#{endTime},</if>
+            <if test="degree!=null">#{degree}</if>
+        </trim>
+
+    </insert>
+    <select id="queryEducationByResumeId" parameterType="Integer" resultMap="educationMap">
+        SELECT * FROM HRMS.EDUCATION WHERE RESUME_ID=#{resumeId}
+    </select>
+
+
+</mapper>

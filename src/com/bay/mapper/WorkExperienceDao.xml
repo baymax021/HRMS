@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bay.dao.WorkExperienceDao">
+    <resultMap id="workExperienceMap" type="WorkExperience">
+        <id column="wid" property="wid"/>
+        <result column="RESUME_ID" property="resumeId"/>
+        <result column="COMPANY" property="company"/>
+        <result column="POSITION" property="position"/>
+        <result column="START_DATE" property="startDate"/>
+        <result column="END_DATE" property="endDate"/>
+        <result column="JOB_CONTENT" property="jobContent"/>
+        <association property="resume" javaType="Resume" resultMap="com.bay.dao.ResumeDao.resumeMap"/>
+    </resultMap>
+    <insert id="addWorkExperience" parameterType="WorkExperience">
+        <selectKey keyProperty="wid" resultType="java.lang.Integer" order="BEFORE">
+            SELECT HRMS.aa.nextval from dual
+        </selectKey>
+        INSERT INTO HRMS.work_experience
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="wid!=null">wid,</if>
+            <if test="resumeId!=null">RESUME_ID,</if>
+            <if test="company!=null">company,</if>
+            <if test="position!=null">POSITION,</if>
+            <if test="startDate!=null">START_DATE,</if>
+            <if test="endDate!=null">END_DATE,</if>
+            <if test="jobContent!=null">JOB_CONTENT</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="wid!=null">#{wid},</if>
+            <if test="resumeId!=null">#{resumeId},</if>
+            <if test="company!=null">#{company},</if>
+            <if test="position!=null">#{position},</if>
+            <if test="startDate!=null">#{startDate},</if>
+            <if test="endDate!=null">#{endDate},</if>
+            <if test="jobContent!=null">#{jobContent}</if>
+        </trim>
+    </insert>
+    <select id="queryWorkExperienceByResumeId" parameterType="java.lang.Integer" resultMap="workExperienceMap">
+        SELECT * FROM HRMS.WORK_EXPERIENCE WHERE RESUME_ID = #{resumeId}
+    </select>
+
+
+</mapper>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bay.dao.ResumeDao">
+    <resultMap id="resumeMap" type="Resume">
+        <id column="rid" property="rid" javaType="java.lang.Integer"/>
+        <result column="CANDIDATE_ID" property="candidateId" javaType="java.lang.Integer"/>
+        <!--<association property="candidate" javaType="Candidate" resultMap="com.bay.dao.CandidateDao.candidateMap"/>-->
+        <!--<association property="basicInfo"   javaType="BasicInfo"   resultMap="com.bay.dao.BasicInfoDao.basicInfoMap"/>-->
+        <!--<collection property="educations" ofType="Education" column="resume_id" resultMap="com.bay.dao.EducationDao.educationMap"/>-->
+        <!--<collection property="workExperiences" ofType="WorkExperience" resultMap="com.bay.dao.WorkExperienceDao.workExperienceMap"/>-->
+        <!--<collection property="projectExperiences" ofType="ProjectExperience" resultMap="com.bay.dao.ProjectExperienceDao.projectExperienceMap"/>-->
+        <association property="candidate" javaType="Candidate" column="rid"/>
+        <association property="basicInfo"   javaType="BasicInfo"  column="rid" select="com.bay.dao.BasicInfoDao.queryBasicInfoByResumeId" />
+        <collection property="educations" ofType="Education" column="rid" select="com.bay.dao.EducationDao.queryEducationByResumeId"/>
+        <collection property="workExperiences" ofType="WorkExperience" column="rid" select="com.bay.dao.WorkExperienceDao.queryWorkExperienceByResumeId"/>
+        <collection property="projectExperiences" ofType="ProjectExperience" column="rid" select="com.bay.dao.ProjectExperienceDao.queryProjectExperienceByResumeId"/>
+    </resultMap>
+
+    <insert id="addResume" parameterType="Resume">
+        <selectKey keyProperty="rid" order="BEFORE" resultType="java.lang.Integer">
+            SELECT HRMS.AA.nextval FROM dual
+        </selectKey>
+        INSERT INTO HRMS.RESUME
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="rid!=null">RID,</if>
+            <if test="candidateId!=null">CANDIDATE_ID</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="rid!=null">#{rid},</if>
+            <if test="candidateId!=null">#{candidateId}</if>
+        </trim>
+    </insert>
+
+
+    <select id="queryResumeById" parameterType="Integer" resultMap="resumeMap">
+        SELECT * FROM HRMS.RESUME WHERE RID=#{id}
+    </select>
+    <select id="reusmeByCid" parameterType="Integer" resultMap="resumeMap">
+        SELECT * FROM HRMS.RESUME WHERE CANDIDATE_ID=#{candidateId}
+    </select>
+
+
+
+
+</mapper>

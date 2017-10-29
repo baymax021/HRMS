@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bay.dao.EmployeeDao">
+    <resultMap id="employeeMap" type="Employee">
+        <id column="emp_id" property="empId" javaType="java.lang.Integer"/>
+        <result column="password" property="password" javaType="String"/>
+        <result column="RESUME_ID" property="resumeId" javaType="java.lang.Integer"/>
+        <result column="DEPARTMENT_ID" property="departmentId" javaType="java.lang.Integer"/>
+        <result column="POSITION_ID" property="positionId" javaType="java.lang.Integer"/>
+        <result column="EMP_STATUS" property="empStatus" javaType="String"/>
+        <result column="EMP_TYPE" property="empType" javaType="String"/>
+        <result column="ENTRY_TIME" property="entryTime" javaType="java.sql.Timestamp"/>
+        <result column="DIMISSION_TIME" property="dimissionTime" javaType="java.sql.Timestamp"/>
+        <association property="resume" javaType="Resume" resultMap="com.bay.dao.ResumeDao.resumeMap"/>
+    </resultMap>
+    <insert id="addEmployee" parameterType="Employee">
+        <selectKey keyProperty="empId" resultType="java.lang.Integer" order="BEFORE">
+            SELECT HRMS.EMP.nextval FROM dual
+        </selectKey>
+        INSERT INTO HRMS.EMPLOYEE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="empId != null">EMP_ID,</if>
+            <if test="password != null">PASSWORD,</if>
+            <if test="departmentId != null">DEPARTMENT_ID,</if>
+            <if test="positionId != null">POSITION_ID,</if>
+            <if test="empStatus != null">EMP_STATUS,</if>
+            <if test="empType != null">EMP_TYPE,</if>
+            <if test="entryTime != null">ENTRY_TIME,</if>
+            <if test="dimissionTime != null">DIMISSION_TIME</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="empId != null">#{empId},</if>
+            <if test="password != null">#{password},</if>
+            <if test="departmentId != null">#{departmentId},</if>
+            <if test="positionId != null">#{positionId},</if>
+            <if test="empStatus != null">#{empStatus}</if>
+            <if test="empType != null">#{empType},</if>
+            <if test="entryTime != null">#{entryTime},</if>
+            <if test="dimissionTime != null">#{dimissionTime}</if>
+        </trim>
+
+    </insert>
+    <select id="employeeList" resultMap="employeeMap">
+        SELECT * FROM HRMS.EMPLOYEE
+        <where>
+            <if test="departmentId != null"> AND DEPARTMENT_ID = #{departmentId},</if>
+            <if test="positionId != null"> AND POSITION_ID=#{positionId},</if>
+        </where>
+    </select>
+    <select id="queryEmployeeByEmpidAndPassword" parameterType="Employee" resultMap="employeeMap">
+        SELECT * FROM HRMS.EMPLOYEE WHERE EMP_ID=#{empId} AND PASSWORD = #{password}
+    </select>
+
+
+</mapper>

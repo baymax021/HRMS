@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="@192.168.99.100">
+  <database-model serializer="dbm" rdbms="ORACLE" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="HRMS">
+      <ObjectId>50</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="PUBLIC">
+      <ObjectId>1</ObjectId>
+    </schema>
+    <schema id="4" parent="1" name="SYS">
+      <ObjectId>0</ObjectId>
+    </schema>
+    <schema id="5" parent="1" name="SYSTEM">
+      <ObjectId>5</ObjectId>
+    </schema>
+    <schema id="6" parent="1" name="OUTLN">
+      <ObjectId>9</ObjectId>
+    </schema>
+    <schema id="7" parent="1" name="CTXSYS">
+      <ObjectId>32</ObjectId>
+    </schema>
+    <schema id="8" parent="1" name="XDB">
+      <ObjectId>34</ObjectId>
+    </schema>
+    <schema id="9" parent="1" name="ANONYMOUS">
+      <ObjectId>35</ObjectId>
+    </schema>
+    <schema id="10" parent="1" name="MDSYS">
+      <ObjectId>42</ObjectId>
+    </schema>
+    <schema id="11" parent="1" name="HR">
+      <ObjectId>43</ObjectId>
+    </schema>
+    <schema id="12" parent="1" name="FLOWS_FILES">
+      <ObjectId>44</ObjectId>
+    </schema>
+    <schema id="13" parent="1" name="APEX_PUBLIC_USER">
+      <ObjectId>45</ObjectId>
+    </schema>
+    <schema id="14" parent="1" name="APEX_040000">
+      <ObjectId>47</ObjectId>
+    </schema>
+    <schema id="15" parent="1" name="SCOTT">
+      <ObjectId>48</ObjectId>
+    </schema>
+    <schema id="16" parent="1" name="BAY">
+      <ObjectId>49</ObjectId>
+    </schema>
+    <schema id="17" parent="1" name="XS$NULL">
+      <ObjectId>2147483638</ObjectId>
+    </schema>
+    <sequence id="18" parent="2" name="AA">
+      <ObjectId>20325</ObjectId>
+    </sequence>
+    <sequence id="19" parent="2" name="EMP">
+      <ObjectId>20348</ObjectId>
+    </sequence>
+    <table id="20" parent="2" name="BASIC_INFO">
+      <ObjectId>20330</ObjectId>
+    </table>
+    <table id="21" parent="2" name="CANDIDATE">
+      <ObjectId>20326</ObjectId>
+    </table>
+    <table id="22" parent="2" name="DELIVER_RECORD">
+      <ObjectId>20461</ObjectId>
+    </table>
+    <table id="23" parent="2" name="DEPARTMENT">
+      <ObjectId>20457</ObjectId>
+    </table>
+    <table id="24" parent="2" name="EDUCATION">
+      <ObjectId>20338</ObjectId>
+    </table>
+    <table id="25" parent="2" name="EMPLOYEE">
+      <ObjectId>20463</ObjectId>
+    </table>
+    <table id="26" parent="2" name="POSITION">
+      <ObjectId>20455</ObjectId>
+    </table>
+    <table id="27" parent="2" name="PROJECT_EXPERIENCE">
+      <ObjectId>20336</ObjectId>
+    </table>
+    <table id="28" parent="2" name="RECRUITMENT">
+      <ObjectId>20459</ObjectId>
+    </table>
+    <table id="29" parent="2" name="RESUME">
+      <ObjectId>20328</ObjectId>
+    </table>
+    <table id="30" parent="2" name="WORK_EXPERIENCE">
+      <ObjectId>20467</ObjectId>
+    </table>
+  </database-model>
+</dataSource>
