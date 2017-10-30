@@ -5,7 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Created by baymax on 2017/10/26.
+ *
+ * @author baymax
+ * @date 2017/10/26
  * No cross no  crown.
  */
 @Data
@@ -13,9 +15,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class BasicInfo {
     private Integer bid;
-    private Integer resumeId; //简历id
-    private String realName; // 真实姓名
-    private String image; // 证件照
+    /**
+     * 简历id
+     */
+    private Integer resumeId;
+    /**
+     *  真实姓名
+     */
+    private String realName;
+    /**
+     *  证件照
+     */
+    private String image;
     private String gender;
     private String dateOfBirth;
     private String phone;

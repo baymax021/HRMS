@@ -36,9 +36,14 @@
 
 
     <select id="queryResumeById" parameterType="Integer" resultMap="resumeMap">
-        SELECT * FROM HRMS.RESUME WHERE RID=#{id}
+        SELECT * FROM HRMS.RESUME WHERE RID=#{rid}
     </select>
     <select id="reusmeByCid" parameterType="Integer" resultMap="resumeMap">
+        SELECT * FROM HRMS.RESUME WHERE CANDIDATE_ID=#{candidateId}
+    </select>
+
+
+    <select id="reusmeCid" parameterType="Integer" resultType="Resume">
         SELECT * FROM HRMS.RESUME WHERE CANDIDATE_ID=#{candidateId}
     </select>
 

@@ -5,7 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Created by baymax on 2017/10/26.
+ *
+ * @author baymax
+ * @date 2017/10/26
  * No cross no  crown.
  */
 @Data

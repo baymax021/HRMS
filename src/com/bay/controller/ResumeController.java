@@ -1,6 +1,7 @@
 package com.bay.controller;
 
 import com.bay.model.*;
+import com.bay.service.DeliverRecordService;
 import com.bay.service.ResumeService;
 import com.bay.util.ObjectParseUtil;
 import jdk.nashorn.internal.ir.debug.JSONWriter;
@@ -26,13 +27,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by baymax on 2017/10/27.
+ *
+ * @author baymax
+ * @date 2017/10/27
  * No cross no  crown.
  */
 @Controller
 public class ResumeController {
     @Resource
     private ResumeService resumeService;
+
+    @Resource
+    private DeliverRecordService deliverRecordService;
 
     @RequestMapping(value = "/addResume", method = RequestMethod.POST)
     public String addResume(Resume resume, BasicInfo basicInfo, Education education, WorkExperience workExperience, ProjectExperience projectExperience) {
@@ -59,23 +65,38 @@ public class ResumeController {
     @RequestMapping(value = "/my_resume", method = RequestMethod.POST)
     @ResponseBody
     public void myResume(Integer cid, HttpServletResponse response) {
-        System.out.println(cid);
         Resume resume = resumeService.reusmeByCid(cid);
         JSONObject jsonObject = JSONObject.fromObject(resume);
-        System.out.println(jsonObject);
-//        if (resume != null) {
-
-            try {
-                response.getWriter().print(jsonObject);
-            } catch (IOException e) {
-                e.printStackTrace();
-//            }
-//        }else {
-//            try {
-//                response.getWriter().print("no");
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
+        try {
+            response.getWriter().print(jsonObject);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
+
+    @RequestMapping(value = "/query_resume", method = RequestMethod.GET)
+    @ResponseBody
+    public void queryResume(Integer drId, HttpServletResponse response) {
+        System.out.println(drId);
+        DeliverRecord deliverRecord = deliverRecordService.deliverRecord(drId);
+        System.out.println(deliverRecord);
+        if(deliverRecord.getLabel().equals(DeliverRecord.LABEL_SENDED)){
+            deliverRecordService.updateDeliverRecord(drId,DeliverRecord.LABEL_READED);
+        }
+        Integer resumeId = deliverRecord.getResumeId();
+        System.out.println(resumeId);
+        Resume resume = resumeService.queryResumeById(resumeId);
+        System.out.println(resume);
+        JSONObject jsonObject = JSONObject.fromObject(resume);
+        System.out.println(jsonObject);
+        try {
+            response.getWriter().print(jsonObject);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
 }

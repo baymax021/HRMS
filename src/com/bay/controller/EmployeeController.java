@@ -20,9 +20,7 @@ public class EmployeeController {
     private EmployeeService employeeService;
     @RequestMapping(value = "/emp.login", method = RequestMethod.POST)
     public String login(Employee employee, HttpSession session, ModelMap modelMap){
-        System.out.println(employee);
         Employee employee1 = employeeService.queryEmployeeByEmpidAndPassword(employee);
-        System.out.println(employee1);
         if(employee1 != null){
             if(employee1.getEmpType().equalsIgnoreCase("admin")){
                 session.setAttribute("admin",employee1);
@@ -35,4 +33,16 @@ public class EmployeeController {
         modelMap.put("info","员工编号或密码不正确");
         return "employee/login";
     }
+
+
+    /**
+     *
+     * @param drId
+     * @return
+     */
+    @RequestMapping(value = "/hireNew",method = RequestMethod.GET)
+    public String hire(Integer drId){
+        return "";
+    }
+
 }
