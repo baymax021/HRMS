@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bay.dao.RecruitmentDao">
+    <resultMap id="recruitmentMap" type="Recruitment">
+        <id column="REC_ID" property="recId" />
+        <result column="REC_POSITION" property="recPosition"/>
+        <result column="REC_PAY" property="recPay"/>
+        <result column="WORK_CONTENT" property="workContent"/>
+        <result column="WORK_ADDRESS" property="workAddress"/>
+        <result column="OTHER_REQUIREMENTS" property="otherRequirements"/>
+        <result column="CREATE_TIME" property="createTime"/>
+    </resultMap>
+    <insert id="addRecruitment" parameterType="Recruitment">
+        <selectKey keyProperty="recId" order="BEFORE" resultType="java.lang.Integer">
+            SELECT HRMS.AA.nextval FROM dual
+        </selectKey>
+        INSERT  INTO HRMS.RECRUITMENT
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="recId!=null">REC_ID,</if>
+            <if test="recPosition!=null">REC_POSITION,</if>
+            <if test="recPay!=null">REC_PAY,</if>
+            <if test="workContent!=null">WORK_CONTENT,</if>
+            <if test="workAddress!=null">WORK_ADDRESS,</if>
+            <if test="otherRequirements!=null">OTHER_REQUIREMENTS,</if>
+            <if test="createTime!=null">CREATE_TIME</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="recId!=null">#{recId},</if>
+            <if test="recPosition!=null">#{recPosition},</if>
+            <if test="recPay!=null">#{recPay},</if>
+            <if test="workContent!=null">#{workContent},</if>
+            <if test="workAddress!=null">#{workAddress},</if>
+            <if test="otherRequirements!=null">#{otherRequirements},</if>
+            <if test="createTime!=null">#{createTime}</if>
+        </trim>
+
+    </insert>
+    <select id="recruitmentList" resultMap="recruitmentMap">
+        SELECT * FROM HRMS.RECRUITMENT
+    </select>
+    <select id="recruitment" parameterType="Integer" resultMap="recruitmentMap">
+        SELECT * FROM HRMS.RECRUITMENT
+        WHERE REC_ID=#{recId}
+    </select>
+
+</mapper>

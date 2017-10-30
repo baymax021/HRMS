@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bay.dao.DeliverRecordDao">
+    <resultMap id="deliverRecordMap" type="DeliverRecord">
+        <id column="DR_ID" property="drId"/>
+        <result column="RESUME_ID" property="resumeId"/>
+        <result column="RECRUITMENT_ID" property="recruitmentId"/>
+        <result column="LABEL" property="label"/>
+        <result column="UPDATE_TIME" property="updateTime" javaType="java.sql.Timestamp"/>
+        <association property="recruitment" javaType="Recruitment" column="RECRUITMENT_ID"
+                     select="com.bay.dao.RecruitmentDao.recruitment"/>
+    </resultMap>
+    <insert id="addDeliverRecord" parameterType="DeliverRecord">
+        <selectKey keyProperty="drId" resultType="java.lang.Integer" order="BEFORE">
+            SELECT HRMS.AA.nextval from dual
+        </selectKey>
+        INSERT INTO HRMS.DELIVER_RECORD
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="drId!=null">DR_ID,</if>
+            <if test="resumeId!=null">RESUME_ID,</if>
+            <if test="recruitmentId!=null">RECRUITMENT_ID,</if>
+            <if test="label!=null">LABEL,</if>
+            <if test="updateTime!=null">UPDATE_TIME</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="drId!=null">#{drId},</if>
+            <if test="resumeId!=null">#{resumeId},</if>
+            <if test="recruitmentId!=null">#{recruitmentId},</if>
+            <if test="label!=null">#{label},</if>
+            <if test="updateTime!=null">#{updateTime}</if>
+        </trim>
+    </insert>
+    <update id="updateDeliverRecord" parameterType="DeliverRecord">
+        UPDATE HRMS.DELIVER_RECORD
+        SET UPDATE_TIME=#{updateTime},LABEL=#{label}
+        WHERE DR_ID =#{drId}
+    </update>
+    <select id="deliverRecordList" parameterType="DeliverRecord" resultMap="deliverRecordMap">
+        SELECT * FROM HRMS.DELIVER_RECORD
+        <where>
+            <if test="resumeId!= null">AND RESUME_ID=#{resumeId}</if>
+            <if test="recruitmentId!= null">AND RECRUITMENT_ID=#{recruitmentId}</if>
+        </where>
+    </select>
+
+    <select id="deliverRecord" parameterType="DeliverRecord" resultMap="deliverRecordMap">
+        SELECT * FROM HRMS.DELIVER_RECORD WHERE DR_ID=#{drId}
+    </select>
+
+
+</mapper>

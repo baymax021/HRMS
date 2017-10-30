@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bay.dao.PositionDao">
+    <resultMap id="positionMap" type="Position">
+        <id column="POS_ID" property="posId"/>
+        <result column="DEPARTMENT_ID" property="departmentId"/>
+        <result column="POS_NAME" property="posName"/>
+        <association property="department" javaType="Department" column=""/>
+    </resultMap>
+
+    <insert id="">
+
+    </insert>
+
+
+</mapper>
