@@ -32,9 +32,6 @@ public class Test {
 //        Candidate candidate1 = candidateService.candidateLogin(candidate);
 //        System.out.println(candidate1);
 
-        String info = "该员工的账号信息如下：\n 员工编号：1006 初始密码：123456  姓名： 张三";
-
-        System.out.println("录用成功！\n"+info);
 
 
     }
