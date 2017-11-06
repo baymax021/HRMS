@@ -15,7 +15,6 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- *
  * @author baymax on
  * @date 2017-10-29 16:44
  * No cross no  crown.
@@ -54,35 +53,36 @@ public class DeliverRecordController {
         return jsonArray;
     }
 
-    @RequestMapping(value = "/update",method = RequestMethod.GET)
+    @RequestMapping(value = "/update", method = RequestMethod.GET)
     @ResponseBody
-    public String update(Integer drId){
-        DeliverRecord deliverRecord = deliverRecordService.deliverRecord(drId);
-        if(DeliverRecord.LABEL_READED.equals(deliverRecord.getLabel())){
-            boolean b = deliverRecordService.updateDeliverRecord(drId, DeliverRecord.LABEL_INVITED);
-            if(b){
-                return "{\"info\":\"发送成功\"}";
-            }
-            return "{\"info\":\"发送失败\"}";
-        }
-        return "{\"info\":\" \"}";
+    public String update(Integer drId) {
+        String s = deliverRecordService.updateDeliverRecord(drId);
+        System.out.println(s+"qqqqqqqqqqqqqqqqqqqqqqqqq");
+        return "{\"info\":\""+s+"\"}";
+
+
+//        DeliverRecord deliverRecord = deliverRecordService.deliverRecord(drId);
+//        if(DeliverRecord.LABEL_READED.equals(deliverRecord.getLabel())){
+//            boolean b = deliverRecordService.updateDeliverRecord(drId, DeliverRecord.LABEL_INVITED);
+//            if(b){
+//                return "{\"info\":\"发送成功\"}";
+//            }
+//            return "{\"info\":\"发送失败\"}";
+//        }
+//        return "{\"info\":\" \"}";
     }
 
-    @RequestMapping(value = "/sub_int",method = RequestMethod.GET)
+    @RequestMapping(value = "/sub_int", method = RequestMethod.GET)
     @ResponseBody
-    public String subInt(Integer drId){
-        System.out.println(drId);
-        DeliverRecord deliverRecord = deliverRecordService.deliverRecord(drId);
-        if(DeliverRecord.LABEL_INVITED.equals(deliverRecord.getLabel())){
-            boolean b = deliverRecordService.updateDeliverRecord(drId, DeliverRecord.LABEL_INTERVIEW);
-            if(b){
-                return "{\"info\":\"发送成功\"}";
-            }
+    public String subInt(Integer drId) {
+        String s = deliverRecordService.updateDeliverRecord(drId);
+        if ("2".equals(s)) {
+            return "{\"info\":\"发送成功\"}";
+        } else {
+
             return "{\"info\":\"发送失败\"}";
         }
-        return "{\"info\":\" \"}";
     }
-
 
 
 }

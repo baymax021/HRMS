@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/mystyle.css" charset="UTF-8">
+    <script src="../js/jquery-3.0.0.js" charset="UTF-8" type="text/javascript"></script>
+    <script src="../js/myjs.js" charset="UTF-8" type="text/javascript"></script>
+
+
+    <style>
+       /* ul{
+            list-style: none;
+            float: left;
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            border: 0px solid black;
+            width: 100px;
+            text-align: center;
+            list-style: none;
+            float: left;
+            margin: 0;
+            padding: 0;
+        }*/
+       .ul1,.ul2{
+           list-style: none;
+           float: left;
+           margin: 0;
+           padding: 0;
+       }
+        .li1{
+            border: 0px solid black;
+            width: 100px;
+            text-align: center;
+            list-style: none;
+            float: left;
+            margin: 0;
+            padding: 0;
+            height: 300px;
+            line-height: 300px;
+        }
+        .li2{
+            border: 0px solid black;
+            width: 100px;
+            text-align: center;
+            list-style: none;
+            float: left;
+            margin: 0;
+            padding: 0;
+            height: 100px;
+            line-height: 100px;
+        }
+
+       .menu-icon{
+           width: 0.9rem;
+           height: 0.45rem;
+           border-top: 0.1rem solid #ffffff;
+           border-bottom:0.1rem solid #ffffff;
+           background-color: #ff28b9;
+           padding: 0.1rem 0;
+           margin-top:0.9rem;
+           background-clip:content-box;
+       }
+
+    </style>
+
+
+
+
+
+    <!--<script language=JavaScript>-->
+        <!--var timerID = null;-->
+        <!--var timerRunning = false;-->
+        <!--function stopclock() {-->
+            <!--if (timerRunning)-->
+                <!--clearTimeout(timerID);-->
+            <!--timerRunning = false;-->
+        <!--}-->
+        <!--function startclock() {-->
+            <!--stopclock();-->
+            <!--showtime();-->
+        <!--}-->
+
+        <!--function showtime() {-->
+            <!--var now = new Date();-->
+
+            <!--document.clock.thetime.value = now.toString();-->
+            <!--timerID = setTimeout("showtime()", 1000);-->
+            <!--timerRunning = true;-->
+        <!--}-->
+    <!--</script>-->
+
+
+
+
+
+
+    <script>
+
+        $(document).on("pagebeforecreate",function(){
+            alert(2)
+
+        });
+        $(document).on("pagecreate",function(){
+            alert(3)
+        });
+        function sec() {
+            var dep = document.getElementById("dep").value;
+            console.log(dep)
+        }
+        function test() {
+          var deps = document.getElementsByName("dep");
+          var array = new Array();
+          var j = 0;
+          for(var i = 0;i<deps.length;i++){
+              if(deps[i].checked){
+                  array[j]=deps[i].value;
+                  j++;
+              }
+          }
+          console.log(array.contains(1))
+
+        }
+
+
+
+
+
+    </script>
+    <style>
+        #1{
+            width: 10px;
+            border-bottom: 1px;
+            border-top: 1px;
+        }
+        .caidan{
+
+            width: 20px;
+            height: 20px;
+        }
+        .cd{
+            list-style: none;
+            /*border: 3px;*/
+            margin:  4px 0;
+        }
+
+
+    </style>
+</head>
+<body>
+<!--<span style="font-family:Comic Sans MS;font-size:14px;">-->
+   <!--<div class="menu-icon"></div>-->
+   <!--<div class="menu-icon"></div>-->
+   <!--<div class="menu-icon"></div>-->
+<!--</span>-->
+<!--<div class="caidan">-->
+    <!--<hr class="cd">-->
+    <!--<hr class="cd">-->
+    <!--<hr class="cd">-->
+<!--</div>-->
+
+<!--<html>-->
+<!--<head>-->
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />-->
+<!--</head>-->
+<!--当前时间：-->
+<!--<div id="time" style="height: 50px;line-height: 50px;font-size: 30px">-->
+    <!--<script>-->
+        <!--document.getElementById('time').innerHTML = new Date().toLocaleString()-->
+            <!--+ ' 星期' + '日一二三四五六'.charAt(new Date().getDay());-->
+        <!--setInterval(-->
+            <!--"document.getElementById('time').innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());",-->
+            <!--1000);-->
+    <!--</script>-->
+<!--</div>-->
+<!--<body>-->
+<!--</body>-->
+<!--</html>-->
+<!--&lt;!&ndash;<div>&ndash;&gt;-->
+    <!--&lt;!&ndash;<input type="checkbox" onclick="test()" id="1" value="1"  name="dep">1&ndash;&gt;-->
+    <!--&lt;!&ndash;<input type="checkbox" onclick="test()" id="2" value="2"  name="dep">2&ndash;&gt;-->
+    <!--&lt;!&ndash;<input type="checkbox" onclick="test()" id="3" value="3"  name="dep">3&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div>&ndash;&gt;-->
+    <!--&lt;!&ndash;<input type="checkbox" value="11"  name="pos">a&ndash;&gt;-->
+    <!--&lt;!&ndash;<input type="checkbox" value="12"  name="pos">b&ndash;&gt;-->
+    <!--&lt;!&ndash;<input type="checkbox" value="13"  name="pos">c&ndash;&gt;-->
+    <!--&lt;!&ndash;<input type="checkbox" value="14"  name="pos">d&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+
+
+
+
+
+<!--&lt;!&ndash;<form action="">&ndash;&gt;-->
+<!--&lt;!&ndash;<ul class="ul1">&ndash;&gt;-->
+    <!--&lt;!&ndash;<li class="li1">233ee</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li class="li1">233ee</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li class="li1">&ndash;&gt;-->
+        <!--&lt;!&ndash;<ul class="ul2">&ndash;&gt;-->
+            <!--&lt;!&ndash;<li class="li2"><a style="line-height: 100px">aaa</a></li>&ndash;&gt;-->
+            <!--&lt;!&ndash;<li class="li2">333</li>&ndash;&gt;-->
+            <!--&lt;!&ndash;<li class="li2">333</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li class="li1">&ndash;&gt;-->
+        <!--&lt;!&ndash;<ul class="ul2">&ndash;&gt;-->
+            <!--&lt;!&ndash;<li class="li2">333</li>&ndash;&gt;-->
+            <!--&lt;!&ndash;<li class="li2">333</li>&ndash;&gt;-->
+            <!--&lt;!&ndash;<li class="li2">333</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+<!--&lt;!&ndash;</ul>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<span class="dep_btn" onclick="sub_update()" >确认</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;<input class="dep_btn" type="button" id="cancel_dep" value="取消">&ndash;&gt;-->
+<!--&lt;!&ndash;</form>&ndash;&gt;-->
+
+
+
+
+
+
+
+
+    <!--&lt;!&ndash;<h4 id="basic">基本信息</h4>&ndash;&gt;-->
+    <!--&lt;!&ndash;<hr>&ndash;&gt;-->
+    <!--&lt;!&ndash;<div id="basicInfo">&ndash;&gt;-->
+        <!--&lt;!&ndash;<p>&ndash;&gt;-->
+            <!--&lt;!&ndash;<span class="need"></span>姓名：<span class="need" ></span>&ndash;&gt;-->
+            <!--&lt;!&ndash;<span class="need"></span>性别：<span class="need"></span>&ndash;&gt;-->
+        <!--&lt;!&ndash;</p>&ndash;&gt;-->
+        <!--&lt;!&ndash;<p>&ndash;&gt;-->
+            <!--&lt;!&ndash;<span class="need"></span>出生日期：<span class="need"></span>&ndash;&gt;-->
+            <!--&lt;!&ndash;<span class="need"></span>手机号码：<span class="need"></span>&ndash;&gt;-->
+        <!--&lt;!&ndash;</p>&ndash;&gt;-->
+        <!--&lt;!&ndash;<p>&ndash;&gt;-->
+            <!--&lt;!&ndash;<span class="need"></span>电子邮箱：<span class="need"></span>&ndash;&gt;-->
+            <!--&lt;!&ndash;<span class="need"></span>户籍：<span class="need"></span>&ndash;&gt;-->
+        <!--&lt;!&ndash;</p>&ndash;&gt;-->
+        <!--&lt;!&ndash;<p>&ndash;&gt;-->
+            <!--&lt;!&ndash;<span class="need"></span>住址：<span class="need"></span>&ndash;&gt;-->
+            <!--&lt;!&ndash;<span class="need"></span>婚姻状况：<span class="need"></span>&ndash;&gt;-->
+        <!--&lt;!&ndash;</p>&ndash;&gt;-->
+        <!--&lt;!&ndash;<p>&ndash;&gt;-->
+            <!--&lt;!&ndash;<span class="need"></span>自我评价：<textarea name="selfEvaluation" cols="40" rows="8"  style="resize: none"></textarea>&ndash;&gt;-->
+            <!--&lt;!&ndash;<span class="need"></span>上传头像：<span></span>&ndash;&gt;-->
+        <!--&lt;!&ndash;</p>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<h4 id="edu">教育经历</h4>&ndash;&gt;-->
+    <!--&lt;!&ndash;<hr>&ndash;&gt;-->
+    <!--&lt;!&ndash;<table id="t_edu" hidden width="90%">&ndash;&gt;-->
+        <!--&lt;!&ndash;<thead>&ndash;&gt;-->
+        <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+            <!--&lt;!&ndash;<th>就读时间</th>&ndash;&gt;-->
+            <!--&lt;!&ndash;<th>学校名称</th>&ndash;&gt;-->
+            <!--&lt;!&ndash;<th>所学专业</th>&ndash;&gt;-->
+            <!--&lt;!&ndash;<th>学历</th>&ndash;&gt;-->
+        <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+        <!--&lt;!&ndash;</thead>&ndash;&gt;-->
+        <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="date" name="startTime">&ndash;&gt;-->
+                <!--&lt;!&ndash;至 <input type="date" name="endTime"></td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="text" name="school"></td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="text" name="major"></td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="text" name="degree"></td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="button" id="2222" name="删除"></td>&ndash;&gt;-->
+        <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+        <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="date" name="startTime">&ndash;&gt;-->
+                <!--&lt;!&ndash;至<input type="date" name="endTime"></td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="text" name="school"></td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="text" name="major"></td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="text" name="degree"></td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td>删除</td>&ndash;&gt;-->
+        <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+        <!--&lt;!&ndash;<tfoot>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td colspan="4">&ndash;&gt;-->
+            <!--&lt;!&ndash;<input type="button" id="add_edu" value="继续添加教育信息">&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<input type="button" id="save_edu" value="保存">&ndash;&gt;-->
+        <!--&lt;!&ndash;</td>&ndash;&gt;-->
+        <!--&lt;!&ndash;</tfoot>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;</table>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<h4 id="work_exp"> 工作经历</h4>&ndash;&gt;-->
+    <!--&lt;!&ndash;<hr>&ndash;&gt;-->
+    <!--&lt;!&ndash;<table id="t_work_exp" hidden width="90%">&ndash;&gt;-->
+        <!--&lt;!&ndash;<thead>&ndash;&gt;-->
+        <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+            <!--&lt;!&ndash;<th>时间</th>&ndash;&gt;-->
+            <!--&lt;!&ndash;<th>公司名称</th>&ndash;&gt;-->
+            <!--&lt;!&ndash;<th>职位</th>&ndash;&gt;-->
+            <!--&lt;!&ndash;<th>主要工作内容</th>&ndash;&gt;-->
+        <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+        <!--&lt;!&ndash;</thead>&ndash;&gt;-->
+        <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="date" name="startDate">&ndash;&gt;-->
+                <!--&lt;!&ndash;至 <input type="date" name="endDate"></td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="text" name="company"></td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="text" name="position"></td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="text" name="jobContent"></td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="button" id="222" name="删除"></td>&ndash;&gt;-->
+        <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+        <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="date" name="startDate">&ndash;&gt;-->
+                <!--&lt;!&ndash;至 <input type="date" name="endDate"></td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="text" name="company"></td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="text" name="position"></td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="text" name="jobContent"></td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="button" id="22" name="删除"></td>&ndash;&gt;-->
+        <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+        <!--&lt;!&ndash;<tfoot>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td colspan="4">&ndash;&gt;-->
+            <!--&lt;!&ndash;<input type="button" id="add_work_exp" value="继续添加工作经历">&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<input type="button" id="save_work_exp" value="保存">&ndash;&gt;-->
+        <!--&lt;!&ndash;</td>&ndash;&gt;-->
+        <!--&lt;!&ndash;</tfoot>&ndash;&gt;-->
+    <!--&lt;!&ndash;</table>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<h4  id="pro_exp"> 项目经验</h4>&ndash;&gt;-->
+    <!--&lt;!&ndash;<hr>&ndash;&gt;-->
+    <!--&lt;!&ndash;<table id="t_pro_exp" hidden width="90%">&ndash;&gt;-->
+        <!--&lt;!&ndash;<thead>&ndash;&gt;-->
+        <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+            <!--&lt;!&ndash;<th>项目名称</th>&ndash;&gt;-->
+            <!--&lt;!&ndash;<th>项目描述</th>&ndash;&gt;-->
+        <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+        <!--&lt;!&ndash;</thead>&ndash;&gt;-->
+        <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="text" name="projectName"></td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="text" name="projectDescription"></td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="button" id="333" name="删除"></td>&ndash;&gt;-->
+        <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+        <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="text" name="projectName"></td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="text" name="projectDescription"></td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input type="button" id="4" name="删除"></td>&ndash;&gt;-->
+        <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+        <!--&lt;!&ndash;<td colspan="4">&ndash;&gt;-->
+            <!--&lt;!&ndash;<input type="button" id="add_pro_exp" value="继续添加工作经历">&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<input type="button" id="save_pro_exp" value="保存">&ndash;&gt;-->
+        <!--&lt;!&ndash;</td>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;</table>&ndash;&gt;-->
+<!--&lt;!&ndash;</form>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<select onchange="sec()" id="dep">&ndash;&gt;-->
+    <!--&lt;!&ndash;<option value="">请选择部门</option>&ndash;&gt;-->
+    <!--&lt;!&ndash;<option value="1">1</option>&ndash;&gt;-->
+    <!--&lt;!&ndash;<option value="2">2</option>&ndash;&gt;-->
+    <!--&lt;!&ndash;<option value="3">3</option>&ndash;&gt;-->
+    <!--&lt;!&ndash;<option value="4">4</option>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</select>&ndash;&gt;-->
+<!--&lt;!&ndash;<select >&ndash;&gt;-->
+    <!--&lt;!&ndash;<option value="">请选择职位</option>&ndash;&gt;-->
+    <!--&lt;!&ndash;<option value="a">a</option>&ndash;&gt;-->
+    <!--&lt;!&ndash;<option value="b">b</option>&ndash;&gt;-->
+    <!--&lt;!&ndash;<option value="c">c</option>&ndash;&gt;-->
+    <!--&lt;!&ndash;<option value="d">d</option>&ndash;&gt;-->
+<!--&lt;!&ndash;</select >&ndash;&gt;-->
+
+
+
+
+
+<!--&lt;!&ndash;<input type="datetime-local" >&ndash;&gt;-->
+<!--&lt;!&ndash;<input type="date" >&ndash;&gt;-->
+
+</body>
+</html>
+
+
+
+
+
+

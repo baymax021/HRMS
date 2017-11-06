@@ -3,19 +3,18 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bay.dao.ResumeDao">
-    <resultMap id="resumeMap" type="Resume">
-        <id column="rid" property="rid" javaType="java.lang.Integer"/>
-        <result column="CANDIDATE_ID" property="candidateId" javaType="java.lang.Integer"/>
-        <!--<association property="candidate" javaType="Candidate" resultMap="com.bay.dao.CandidateDao.candidateMap"/>-->
-        <!--<association property="basicInfo"   javaType="BasicInfo"   resultMap="com.bay.dao.BasicInfoDao.basicInfoMap"/>-->
-        <!--<collection property="educations" ofType="Education" column="resume_id" resultMap="com.bay.dao.EducationDao.educationMap"/>-->
-        <!--<collection property="workExperiences" ofType="WorkExperience" resultMap="com.bay.dao.WorkExperienceDao.workExperienceMap"/>-->
-        <!--<collection property="projectExperiences" ofType="ProjectExperience" resultMap="com.bay.dao.ProjectExperienceDao.projectExperienceMap"/>-->
-        <association property="candidate" javaType="Candidate" column="rid"/>
-        <association property="basicInfo"   javaType="BasicInfo"  column="rid" select="com.bay.dao.BasicInfoDao.queryBasicInfoByResumeId" />
-        <collection property="educations" ofType="Education" column="rid" select="com.bay.dao.EducationDao.queryEducationByResumeId"/>
-        <collection property="workExperiences" ofType="WorkExperience" column="rid" select="com.bay.dao.WorkExperienceDao.queryWorkExperienceByResumeId"/>
-        <collection property="projectExperiences" ofType="ProjectExperience" column="rid" select="com.bay.dao.ProjectExperienceDao.queryProjectExperienceByResumeId"/>
+    <resultMap id="resumeBasicMap" type="Resume">
+        <id column="rid" property="rid" javaType="Integer"/>
+        <result column="CANDIDATE_ID" property="candidateId" javaType="Integer"/>
+    </resultMap>
+    <resultMap id="resumeBasInfoMap" type="Resume" extends="resumeBasicMap">
+        <association property="basicInfo" javaType="BasicInfo"  resultMap="com.bay.dao.BasicInfoDao.basicInfoMap"/>
+    </resultMap>
+    <resultMap id="resumeAllMap" type="Resume" extends="resumeBasicMap">
+        <association property="basicInfo" javaType="BasicInfo"  resultMap="com.bay.dao.BasicInfoDao.basicInfoMap"/>
+        <collection property="educations" ofType="Education" resultMap="com.bay.dao.EducationDao.educationMap"/>
+        <collection property="workExperiences" ofType="WorkExperience"  resultMap="com.bay.dao.WorkExperienceDao.workExperienceMap"/>
+        <collection property="projectExperiences" ofType="ProjectExperience" resultMap="com.bay.dao.ProjectExperienceDao.projectExperienceMap"/>
     </resultMap>
 
     <insert id="addResume" parameterType="Resume">
@@ -35,10 +34,10 @@
     </insert>
 
 
-    <select id="queryResumeById" parameterType="Integer" resultMap="resumeMap">
+    <select id="queryResumeById" parameterType="Integer" resultMap="resumeBasicMap">
         SELECT * FROM HRMS.RESUME WHERE RID=#{rid}
     </select>
-    <select id="reusmeByCid" parameterType="Integer" resultMap="resumeMap">
+    <select id="reusmeByCid" parameterType="Integer" resultMap="resumeBasicMap">
         SELECT * FROM HRMS.RESUME WHERE CANDIDATE_ID=#{candidateId}
     </select>
 
@@ -47,7 +46,23 @@
         SELECT * FROM HRMS.RESUME WHERE CANDIDATE_ID=#{candidateId}
     </select>
 
+    <!--根据投递记录ID查看简历详情-->
+    <select id="reusmeByDrid"  parameterType="Integer" resultMap="resumeAllMap">
+        SELECT * FROM HRMS.RESUME r
+        LEFT JOIN HRMS.DELIVER_RECORD dr
+        ON dr.RESUME_ID = r.RID
+        LEFT JOIN HRMS.BASIC_INFO b ON b.RESUME_ID =r.RID
+        LEFT JOIN HRMS.EDUCATION edu ON edu.RESUME_ID = r.RID
+        LEFT JOIN HRMS.WORK_EXPERIENCE we ON we.RESUME_ID =r.RID
+        LEFT JOIN HRMS.PROJECT_EXPERIENCE pe ON pe.RESUME_ID =r.RID
+        WHERE dr.DR_ID=#{drId}
+    </select>
 
+
+    <!--<select id="reusmeByDrid" parameterType="Integer" resultMap="com.bay.model.Resume"-->
+            <!--resultType="com.bay.model.Resume">-->
+
+    <!--</select>-->
 
 
 </mapper>

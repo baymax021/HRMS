@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bay.dao.TrainDao">
+    <resultMap id="trainBasicMap" type="Train">
+        <id column="tid" property="tid" />
+        <result column="T_START_TIME" property="tStartTime"/>
+        <result column="T_END_TIME" property="tEndTime"/>
+        <result column="T_CONTENT" property="tContent"/>
+        <result column="T_TITLE" property="tTitle"/>
+    </resultMap>
+    <resultMap id="trainDetailMap" type="Train" extends="trainBasicMap">
+        <collection property="trainRecordList" ofType="TrainRecord" resultMap="com.bay.dao.TrainRecordDao.trainRecordBasicMap"/>
+    </resultMap>
+
+    <insert id="addTrain" parameterType="Train" >
+      <selectKey keyProperty="tid" resultType="Integer" order="BEFORE">
+          SELECT aa.nextval FROM dual
+      </selectKey>
+        INSERT INTO TRAIN VALUES (#{tid},#{tStartTime},#{tEndTime},#{tContent},#{tTitle})
+    </insert>
+
+
+
+
+
+
+
+</mapper>

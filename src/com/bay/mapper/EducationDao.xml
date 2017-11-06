@@ -11,7 +11,7 @@
         <result column="START_TIME" property="startTime"/>
         <result column="END_TIME" property="endTime"/>
         <result column="DEGREE" property="degree"/>
-        <association property="resume" javaType="Resume" resultMap="com.bay.dao.ResumeDao.resumeMap"/>
+        <!--<association property="resume" javaType="Resume" resultMap="com.bay.dao.ResumeDao.resumeMap"/>-->
     </resultMap>
     <insert id="addEduByRid" parameterType="Education">
         <selectKey keyProperty="eid" order="BEFORE" resultType="java.lang.Integer">

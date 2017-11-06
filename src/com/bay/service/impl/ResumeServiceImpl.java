@@ -65,4 +65,11 @@ public class ResumeServiceImpl implements ResumeService {
     public Resume reusmeByCid(Integer cId) {
         return resumeDao.reusmeByCid(cId);
     }
+
+    @Override
+    public Resume reusmeByDrid(Integer drId) {
+
+
+        return resumeDao.reusmeByDrid(drId);
+    }
 }

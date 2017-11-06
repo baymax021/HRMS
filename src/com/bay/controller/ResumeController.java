@@ -4,22 +4,16 @@ import com.bay.model.*;
 import com.bay.service.DeliverRecordService;
 import com.bay.service.ResumeService;
 import com.bay.util.ObjectParseUtil;
-import jdk.nashorn.internal.ir.debug.JSONWriter;
-import jdk.nashorn.internal.parser.JSONParser;
-import jdk.nashorn.internal.runtime.JSONFunctions;
-import jdk.nashorn.internal.runtime.JSONListAdapter;
-import jdk.nashorn.internal.runtime.ListAdapter;
-import net.sf.json.JSONArray;
+
 import net.sf.json.JSONObject;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.tags.Param;
+
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -77,16 +71,7 @@ public class ResumeController {
     @RequestMapping(value = "/query_resume", method = RequestMethod.GET)
     @ResponseBody
     public void queryResume(Integer drId, HttpServletResponse response) {
-        System.out.println(drId);
-        DeliverRecord deliverRecord = deliverRecordService.deliverRecord(drId);
-        System.out.println(deliverRecord);
-        if(deliverRecord.getLabel().equals(DeliverRecord.LABEL_SENDED)){
-            deliverRecordService.updateDeliverRecord(drId,DeliverRecord.LABEL_READED);
-        }
-        Integer resumeId = deliverRecord.getResumeId();
-        System.out.println(resumeId);
-        Resume resume = resumeService.queryResumeById(resumeId);
-        System.out.println(resume);
+        Resume resume = resumeService.reusmeByDrid(drId);
         JSONObject jsonObject = JSONObject.fromObject(resume);
         System.out.println(jsonObject);
         try {
@@ -95,7 +80,6 @@ public class ResumeController {
             e.printStackTrace();
         }
     }
-
 
 
 

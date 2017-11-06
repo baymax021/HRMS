@@ -14,46 +14,104 @@
 <head>
     <base href=" <%=basePath%>">
     <title>主页</title>
-    <style>
-        #left_win {
-            border: 1px black solid;
-            padding: 10px 5px 5px 10px;
-            width: 15%;
-            height: 100%;
-            float: left;
-        }
+    <link rel="stylesheet" href="css/mystyle.css" charset="UTF-8">
+    <script src="js/jquery-3.0.0.js" charset="UTF-8" type="text/javascript"></script>
+    <script src="js/myjs.js" charset="UTF-8" type="text/javascript"></script>
 
-        #right_win {
-            border: 1px black solid;
-            padding: 10px 5px 5px 10px;
-            width: 82%;
-            height: 100%;
-            float: right;
-        }
-
-        #down {
-            border: 1px black solid;
-            width: 100%;
-            height: auto;
-        }
-    </style>
 </head>
 <body>
-<div><span>欢迎登录人力资源管理平台</span> <span>你好<a href="">退出</a></span></div>
-<div>
-    <span>组织架构</span>  <span>招聘管理</span> <span>人事管理</span>
-    <span>考勤管理</span>  <span>培训管理</span>  <span>绩效薪资管理</span>
+<div id="main_header"><span id="header_left">欢迎登录人力资源管理平台</span> <span class="header_right">你好,${sessionScope.employee.realName}&nbsp;<a href=""
+                                                                                                    class="header_right">退出</a></span>
 </div>
+
 <div id="down">
     <div id="left_win">
-        <a href="">招聘信息</a>
 
-        <br>
-        <button id="btn">我的简历</button>
-        <%--<a href="page/candidate/addresume.jsp">我的简历</a>--%>
+        <li class="menu_dh">
+            <div class="first_menu" id="main">首页
+                <div class="xlys" >
+                    <hr class="three_line" >
+                    <hr class="three_line" >
+                    <hr class="three_line" >
+                </div>
+            </div>
+            <ul class="second_menu" >
+            </ul>
+        </li>
+        <ul class="menu_big">
+            <li class="menu_dh">
+                <div class="first_menu" id="zz">组织架构
+                    <div class="xlys" >
+                        <hr class="three_line" >
+                        <hr class="three_line" >
+                        <hr class="three_line" >
+                    </div>
+                </div>
+                <ul class="second_menu" id="zz_detail">
+
+                </ul>
+            </li>
+
+            <li class="menu_dh">
+                <div class="first_menu" id="kq">个人考勤
+                    <div class="xlys" >
+                        <hr class="three_line" >
+                        <hr class="three_line" >
+                        <hr class="three_line" >
+                    </div>
+                </div>
+                <ul class="second_menu" id="kq_detail">
+
+                </ul>
+            </li>
+
+            <li class="menu_dh">
+                <div class="first_menu" id="xc">我的工资条
+                    <div class="xlys" >
+                        <hr class="three_line" >
+                        <hr class="three_line" >
+                        <hr class="three_line" >
+                    </div>
+                </div>
+                <ul class="second_menu" id="xc_detail">
+
+                </ul>
+            </li>
+            <li class="menu_dh">
+                <div class="first_menu" id="px">我的培训
+                    <div class="xlys" >
+                        <hr class="three_line" >
+                        <hr class="three_line" >
+                        <hr class="three_line" >
+                    </div>
+                </div>
+                <ul class="second_menu" id="px_detail">
+                    <li class="third_menu" id="query_px">查看培训记录</li>
+                    <li class="third_menu" id="create_px">发布培训通知</li>
+                </ul>
+            </li>
+            <li class="menu_dh">
+                <div class="first_menu" id="pc">个人中心
+                    <div class="xlys" >
+                        <hr class="three_line" >
+                        <hr class="three_line" >
+                        <hr class="three_line" >
+                    </div>
+                </div>
+                <ul class="second_menu" id="pc_detail">
+                    <li class="third_menu" id="query_pc">基本信息</li>
+                    <li class="third_menu" id="update_pc">更改密码</li>
+                </ul>
+            </li>
+
+        </ul>
+
+
     </div>
     <div id="right_win" style="overflow-y: auto">
-
+        <div id="unview"></div>
+        <div id="currentTime" style="width: auto;height: 300px;font-size: 100px">
+        </div>
     </div>
 </div>
 </body>

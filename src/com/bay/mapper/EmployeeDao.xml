@@ -3,18 +3,32 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bay.dao.EmployeeDao">
-    <resultMap id="employeeMap" type="Employee">
+    <resultMap id="employeeBasicMap" type="Employee">
         <id column="emp_id" property="empId" javaType="java.lang.Integer"/>
         <result column="password" property="password" javaType="String"/>
         <result column="RESUME_ID" property="resumeId" javaType="java.lang.Integer"/>
-        <result column="DEPARTMENT_ID" property="departmentId" javaType="java.lang.Integer"/>
         <result column="POSITION_ID" property="positionId" javaType="java.lang.Integer"/>
         <result column="EMP_STATUS" property="empStatus" javaType="String"/>
         <result column="EMP_TYPE" property="empType" javaType="String"/>
         <result column="ENTRY_TIME" property="entryTime" javaType="java.sql.Timestamp"/>
         <result column="DIMISSION_TIME" property="dimissionTime" javaType="java.sql.Timestamp"/>
-        <association property="resume" javaType="Resume" resultMap="com.bay.dao.ResumeDao.resumeMap"/>
+        <result column="REAL_NAME" property="realName" javaType="String"/>
     </resultMap>
+    <!--<association property="position" javaType="Position" resultMap="com.bay.dao.PositionDao.positionBasicMap"/>-->
+    <!--<resultMap id="employeeAndPosAndResMap" type="Employee" extends="employeeBasicMap">-->
+    <!--<association property="resume" javaType="Resume" column="RESUME_ID" select="com.bay.dao.ResumeDao.queryResumeById"/>-->
+    <!--<association property="position" javaType="Position" select="com.bay.dao.PositionDao.queryPositionAndDepByPosId" column="POSITION_ID"/>-->
+    <!--</resultMap>-->
+    <resultMap id="employeeAllMap" type="Employee" extends="employeeBasicMap">
+        <association property="position" javaType="Position" resultMap="com.bay.dao.PositionDao.posAndDepMap"/>
+        <association property="resume" javaType="Resume" resultMap="com.bay.dao.ResumeDao.resumeBasInfoMap"/>
+    </resultMap>
+    <resultMap id="employeeWithTrainMap" type="Employee" extends="employeeAllMap">
+        <collection property="trainRecordList" ofType="TrainRecord"
+                    resultMap="com.bay.dao.TrainRecordDao.trainRecordBasicMap"/>
+    </resultMap>
+
+
     <insert id="addEmployee" parameterType="Employee">
         <selectKey keyProperty="empId" resultType="java.lang.Integer" order="BEFORE">
             SELECT HRMS.EMP.nextval FROM dual
@@ -23,36 +37,65 @@
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="empId != null">EMP_ID,</if>
             <if test="password != null">PASSWORD,</if>
-            <if test="departmentId != null">DEPARTMENT_ID,</if>
+            <if test="resumeId != null">RESUME_ID,</if>
             <if test="positionId != null">POSITION_ID,</if>
             <if test="empStatus != null">EMP_STATUS,</if>
             <if test="empType != null">EMP_TYPE,</if>
             <if test="entryTime != null">ENTRY_TIME,</if>
-            <if test="dimissionTime != null">DIMISSION_TIME</if>
+            <if test="dimissionTime != null">DIMISSION_TIME,</if>
+            <if test="realName != null">REAL_NAME</if>
         </trim>
         VALUES
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="empId != null">#{empId},</if>
             <if test="password != null">#{password},</if>
-            <if test="departmentId != null">#{departmentId},</if>
+            <if test="resumeId != null">#{resumeId},</if>
             <if test="positionId != null">#{positionId},</if>
-            <if test="empStatus != null">#{empStatus}</if>
+            <if test="empStatus != null">#{empStatus},</if>
             <if test="empType != null">#{empType},</if>
             <if test="entryTime != null">#{entryTime},</if>
-            <if test="dimissionTime != null">#{dimissionTime}</if>
+            <if test="dimissionTime != null">#{dimissionTime},</if>
+            <if test="realName != null">#{realName}</if>
         </trim>
-
     </insert>
-    <select id="employeeList" resultMap="employeeMap">
-        SELECT * FROM HRMS.EMPLOYEE
-        <where>
-            <if test="departmentId != null"> AND DEPARTMENT_ID = #{departmentId},</if>
-            <if test="positionId != null"> AND POSITION_ID=#{positionId},</if>
-        </where>
+    <update id="updateEmployee" parameterType="Employee">
+        UPDATE EMPLOYEE SET PASSWORD = #{password} where EMP_ID = #{empId}
+    </update>
+
+    <select id="queryEmployee" parameterType="Employee" resultMap="employeeBasicMap">
+        SELECT * FROM HRMS.EMPLOYEE  WHERE  EMP_ID=#{empId} AND PASSWORD = #{password} and EMP_STATUS != '已离职'
     </select>
-    <select id="queryEmployeeByEmpidAndPassword" parameterType="Employee" resultMap="employeeMap">
-        SELECT * FROM HRMS.EMPLOYEE WHERE EMP_ID=#{empId} AND PASSWORD = #{password}
+
+    <select id="employeeList" resultMap="employeeAllMap">
+        SELECT * from HRMS.EMPLOYEE e LEFT JOIN HRMS.RESUME r ON e.RESUME_ID = r.RID LEFT JOIN HRMS.BASIC_INFO b ON  b.RESUME_ID = r.RID LEFT JOIN HRMS.POSITION p ON e.POSITION_ID=p.POS_ID LEFT JOIN HRMS.DEPARTMENT d ON d.DEP_ID=p.DEPARTMENT_ID
     </select>
+    <select id="queryEmployeeDetail" parameterType="Integer" resultMap="employeeAllMap">
+        SELECT * FROM HRMS.EMPLOYEE e
+        LEFT JOIN HRMS.RESUME r ON e.RESUME_ID = r.RID
+        LEFT JOIN HRMS.BASIC_INFO b ON b.RESUME_ID = r.RID
+        LEFT JOIN HRMS.POSITION p ON p.POS_ID = e.POSITION_ID
+        LEFT JOIN HRMS.DEPARTMENT d ON d.DEP_ID = p.DEPARTMENT_ID
+        WHERE e.EMP_ID=#{empId}
+    </select>
+
+
+    <!--<select id="employeeNotLeaveList" resultMap="employeeAllMap">-->
+        <!--SELECT * from HRMS.EMPLOYEE e LEFT JOIN HRMS.RESUME r ON e.RESUME_ID = r.RID LEFT JOIN HRMS.BASIC_INFO b ON  b.RESUME_ID = r.RID LEFT JOIN HRMS.POSITION p ON e.POSITION_ID=p.POS_ID LEFT JOIN HRMS.DEPARTMENT d ON d.DEP_ID=p.DEPARTMENT_ID-->
+        <!--WHERE EMP_STATUS !='已离职'-->
+    <!--</select>-->
+
+
+    <!--<select id="employeeList" resultMap="employeeAndPosAndResMap">-->
+    <!--SELECT * FROM HRMS.EMPLOYEE-->
+    <!--</select>-->
+    <!--<select id="queryEmployeeByPosId" parameterType="Integer" resultMap="employeeBasicMap">-->
+    <!--SELECT * FROM HRMS.EMPLOYEE WHERE EMP_STATUS !='已离职' AND POSITION_ID=#{positionId} order by EMP_ID-->
+    <!--</select>-->
+
+    <!--<select id="queryEmployee" parameterType="Employee" resultMap="employeeBasicMap">-->
+    <!--SELECT * FROM HRMS.EMPLOYEE-->
+    <!--WHERE  EMP_ID=#{empId} AND PASSWORD = #{password}-->
+    <!--</select>-->
 
 
 </mapper>

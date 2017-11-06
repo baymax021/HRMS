@@ -14,20 +14,28 @@
 <head>
     <base href=" <%=basePath%>">
     <title>发布招聘</title>
+    <style>
+        .in{
+            width: 200px;
+            display:inline-block;
+        }
+    </style>
 </head>
 <body>
 <form action="publishRecruitment.do" method="post">
-    招聘岗位：<input type="text" name="recPosition" >
+    <span class="in">招聘岗位：</span><span class="in"><input type="text" name="recPosition" ></span>
     <br>
-    工作内容：<input type="text" name="workContent">
+    <span class="in">工作内容:</span><span class="in"><input type="text" name="workContent"></span>
     <br>
-    月薪：<input type="text" name="recPay"> 元
+    <span class="in"> 月薪：</span><span class="in"><input type="text" name="recPay"> 元</span>
     <br>
-    工作地点： <input type="text" name="workAddress" >
+    <span class="in"> 工作地点：</span><span class="in"> <input type="text" name="workAddress" ></span>
     <br>
-    其他要求： <input type="text" name="otherRequirements" >
+    <span class="in">  其他要求：</span><span class="in"> <input type="text" name="otherRequirements" ></span>
     <br>
-    <input type="submit" value="发布"> <input type="reset" value="重置">
+    <p style="text-align: center ; width: 400px;">
+        <input type="submit" value="发布"> <input type="reset" value="重置">
+    </p>
 </form>
 
 

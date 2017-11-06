@@ -1,0 +1,365 @@
+
+#main_header {
+    width: auto;
+    height: auto;
+    color: white;
+    background-color: #252661;
+    padding: 15px 40px;
+    line-height: 30px;
+}
+
+#header_left {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 30px;
+}
+
+.header_right {
+    color: white;
+    font-size: 20px;
+    float: right;
+}
+
+#left_win {
+    border: 1px black solid;
+    padding: 10px 5px 5px 0px;
+    width: 13%;
+    height: 100%;
+    float: left;
+}
+
+#right_win {
+    border: 1px black solid;
+    padding: 10px 5px 5px 10px;
+    width: 85%;
+    height: 100%;
+    float: right;
+}
+
+#down {
+    border: 1px black solid;
+    width: 100%;
+    height: auto;
+}
+
+.first_menu {
+    font-size: 18px;
+    color: white;
+    border: 1px #d0d0d0 solid;
+    border-radius: 5px;
+    background-color: #313290;
+    margin: 0px;
+    text-align: left;
+    padding: 5px 0px 5px 20px;
+    width: auto;
+}
+
+.second_menu {
+    list-style: none;
+    margin: 0px;
+    padding: 0 ;
+    display: none;
+
+}
+
+.third_menu {
+    margin: 1px 0px;
+    list-style: none;
+    padding: 3px 0px 3px 30px;
+    border-radius: 2px;
+    background-color: rgba(131, 126, 225, 0.48);
+
+}
+
+.menu_big, .menu_dh {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    color: white;
+    background-color: #181a74;
+}
+
+th, td {
+    padding: 5px 10px;
+    width: auto;
+    text-align: center;
+}
+
+.xlys{
+    height: auto;
+    width: 22px;
+    float: right;
+    padding-right: 15px;
+}
+.three_line{
+    list-style: none;
+    margin:  5px 0;
+}
+
+.dep {
+    border: none;
+    width: 184px;
+    font-size: 15px;
+    background: none;
+    text-align: center;
+    padding: 0;
+}
+
+.form_con {
+    width: 100%;
+    text-align: center;
+}
+
+/*.first_ul, .second_ul {*/
+/*list-style: none;*/
+/*float: left;*/
+/*margin: 0;*/
+/*padding: 0;*/
+/*}*/
+
+/*.first_ul {*/
+/*!*width: 100%;*!*/
+/*}*/
+
+.oper, .depId {
+    background-color: #285c96;
+}
+
+.depName {
+    background-color: rgba(38, 86, 143, 0.43);
+}
+
+.posId {
+    background-color: rgba(36, 79, 133, 0.78);
+}
+
+.posName {
+    background-color: rgba(56, 150, 226, 0.78);
+}
+
+.depOper {
+    background-color: rgba(38, 0, 243, 0.19);
+}
+
+.posNone {
+    background-color: rgba(98, 121, 204, 0.7);
+}
+
+#dep_add {
+    background-color: #181a74;
+    color: white;
+    padding: 5px 15px;
+}
+
+#unview {
+    display: none;
+    position: fixed;
+    top: 150px;
+    left: 550px;
+    z-index: -1;
+}
+
+/*ul{*/
+/*list-style: none;*/
+/*float: left;*/
+/*margin: 0;*/
+/*padding: 0;*/
+/*}*/
+/*li{*/
+/*border: 0px solid black;*/
+/*width: 100px;*/
+/*text-align: center;*/
+/*list-style: none;*/
+/*float: left;*/
+/*margin: 0;*/
+/*padding: 0;*/
+/*}*/
+
+/*新增职位弹窗CSS样式*/
+.in1 {
+    width: 100px;
+    text-align: left;
+    display: inline-block;
+}
+
+.in2 {
+    width: 220px;
+    text-align: left;
+    display: inline-block;
+}
+
+#big {
+    background-color: white;
+    text-align: center;
+    padding: 20px 30px;
+    border: 1px solid rgba(61, 122, 217, 0.85);
+    border-radius: 5px;
+    width: 400px;
+    height: 300px;
+    box-shadow: 0 0 3px #000;
+}
+
+.add_position, .li_1 {
+    list-style: none;
+    margin: 3px 0px;
+    padding: 0px;
+}
+
+#small2 {
+    text-align: center;
+    position: absolute;
+    width: 400px;
+    top: 230px;
+}
+
+#small1 {
+    overflow-y: auto;
+    width: 400px;
+    height: 200px;
+}
+
+.addPos_Btn {
+    border: 1px solid #6989f5;
+    background-color: #6989f5;
+    border-radius: 2px;
+    padding: 1px 10px;
+}
+
+.btn {
+    font-size: 15px;
+    padding: 2px 15px;
+    border-radius: 3px;
+    border: 1px solid gray;
+}
+
+/************************/
+
+.first_ul, #head_ul {
+    list-style: none;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+.first_line {
+    width: 220px;
+    text-align: center;
+    list-style: none;
+    float: left;
+    margin: 1px;
+    padding: 0;
+    height: 50px;
+    line-height: 50px;
+    color: white;
+    background-color: #181a74;
+}
+
+.second_ul {
+    list-style: none;
+    float: left;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.depId,.oper,.depName {
+
+    border: 0px solid black;
+    width: 220px;
+    text-align: center;
+    list-style: none;
+    float: left;
+    margin: 1px 1px;
+    padding: 0;
+
+}
+
+.posNone {
+    border: 0px solid black;
+    width: 442px;
+    text-align: center;
+    list-style: none;
+    float: left;
+    margin: 1px 1px;
+    padding: 0;
+
+}
+
+.posId, .posName, .depOper {
+
+    border: 0px solid black;
+    width: 220px;
+    text-align: center;
+    list-style: none;
+    float: left;
+    margin: 0;
+    padding: 0px;
+
+}
+
+.last_ul {
+    text-align: center;
+    list-style: none;
+    float: left;
+    margin: 0;
+    padding: 0;
+    line-height: 50px;
+    color: white;
+    background-color: #181a74;
+}
+
+#dep_add {
+    border: 0px solid black;
+    width: 1108px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    list-style: none;
+    float: left;
+    margin: 1px 1px;
+    padding: 0;
+}
+
+.del_pos {
+    background-color: #99a1d2;
+    border-radius: 2px;
+    padding: 1px 2px;
+}
+
+.res_title{
+    padding: 5px  20px  ;
+    font-size: 22px;
+    background-color: #181a74;
+    color: white;
+}
+.detail_info{
+    background-color: rgba(61, 122, 217, 0.85);
+
+}
+.user_info{
+    background-color: rgba(158, 161, 217, 0.85);
+}
+.user_photo{
+    background-color: rgba(176, 179, 238, 0.53);
+    width: 200px;
+    height: auto;
+}
+.pxObj{
+    height: 280px;
+    margin: 5px 15px ;
+    width: 180px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 2px;
+    float: left;
+
+}
+.pxSub{
+    clear: both;
+}

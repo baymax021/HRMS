@@ -8,7 +8,7 @@
         <result column="RESUME_ID" property="resumeId"/>
         <result column="PROJECT_NAME" property="projectName"/>
         <result column="PROJECT_DESCRIPTION" property="projectDescription"/>
-        <association property="resume" javaType="Resume" resultMap="com.bay.dao.ResumeDao.resumeMap"/>
+        <!--<association property="resume" javaType="Resume" resultMap="com.bay.dao.ResumeDao.resumeMap"/>-->
     </resultMap>
     <insert id="addProjectExperience" parameterType="ProjectExperience">
         <selectKey keyProperty="pid" resultType="java.lang.Integer" order="BEFORE">

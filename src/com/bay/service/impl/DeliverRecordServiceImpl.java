@@ -28,12 +28,47 @@ public class DeliverRecordServiceImpl implements DeliverRecordService {
     }
 
     @Override
-    public boolean updateDeliverRecord(Integer drId,String label) {
-        DeliverRecord deliverRecord = new DeliverRecord();
-        deliverRecord.setDrId(drId);
-        deliverRecord.setLabel(label);
+    public String  updateDeliverRecord(Integer drId) {
+        DeliverRecord deliverRecord = deliverRecordDao.deliverRecord(drId);
         deliverRecord.setUpdateTime(new Timestamp(System.currentTimeMillis()));
-        return deliverRecordDao.updateDeliverRecord(deliverRecord);
+        if (DeliverRecord.LABEL_SENDED.equals(deliverRecord.getLabel())) {
+//            查阅简历 不用弹窗信息
+            deliverRecord.setLabel(DeliverRecord.LABEL_READED);
+            boolean b = deliverRecordDao.updateDeliverRecord(deliverRecord);
+            if(b){
+                return "1";
+            }else {
+                return "0";
+            }
+        }else if(DeliverRecord.LABEL_READED.equals(deliverRecord.getLabel())){
+//            发送面试邀请 需要弹窗返回信息
+            deliverRecord.setLabel(DeliverRecord.LABEL_INVITED);
+            boolean b = deliverRecordDao.updateDeliverRecord(deliverRecord);
+            if(b){
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                return "2";
+            }else {
+                return "0";
+            }
+        }else if(DeliverRecord.LABEL_INVITED.equals(deliverRecord.getLabel())){
+//            确认应邀，面试 需要返回信息
+            deliverRecord.setLabel(DeliverRecord.LABEL_INTERVIEW);
+            boolean b = deliverRecordDao.updateDeliverRecord(deliverRecord);
+            if(b){
+                return "2";
+            }else {
+                return "0";
+            }
+        }else {
+//            录用，  不用弹窗信息
+            deliverRecord.setLabel(DeliverRecord.LABEL_HIRED);
+            boolean b = deliverRecordDao.updateDeliverRecord(deliverRecord);
+            if(b){
+                return "1";
+            }else {
+                return "0";
+            }
+        }
     }
 
     @Override

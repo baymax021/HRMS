@@ -40,6 +40,12 @@
           <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/jackson-core-asl-1.9.12.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/commons-collections-3.2.1.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/jackson-mapper-asl-1.9.12.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/jackson-core-2.9.2.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/struts2-json-plugin-2.3.28.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/jackson-core-2.6.0-xh.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/jackson-jr-all-2.4.3-xh.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/jackson-databind-2.6.0-xh.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/jackson-annotations-2.6.0-xh.jar" />
         </element>
       </element>
     </root>

@@ -44,6 +44,7 @@ public class CandidateController {
     @RequestMapping(value = "/candidate.login", method = RequestMethod.POST)
     public String login(Candidate candidate, ModelMap modelMap) {
         candidate = candidateService.candidateLogin(candidate);
+        System.out.println(candidate);
         if (candidate != null) {
             modelMap.put("candidate", candidate);
             return "candidate/main";

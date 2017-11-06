@@ -11,7 +11,7 @@
         <result column="START_DATE" property="startDate"/>
         <result column="END_DATE" property="endDate"/>
         <result column="JOB_CONTENT" property="jobContent"/>
-        <association property="resume" javaType="Resume" resultMap="com.bay.dao.ResumeDao.resumeMap"/>
+        <!--<association property="resume" javaType="Resume" resultMap="com.bay.dao.ResumeDao.resumeMap"/>-->
     </resultMap>
     <insert id="addWorkExperience" parameterType="WorkExperience">
         <selectKey keyProperty="wid" resultType="java.lang.Integer" order="BEFORE">

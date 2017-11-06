@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bay.dao.TrainRecordDao">
+    <resultMap id="trainRecordBasicMap" type="TrainRecord">
+        <id column="TR_ID" property="trId"/>
+        <result column="EMPLOYEE_ID" property="employeeId"/>
+        <result column="TRAIN_ID" property="trainId"/>
+        <result column="CREATE_TIME" property="createTime"/>
+    </resultMap>
+    <resultMap id="trainRecordDetailMap" type="TrainRecord" extends="trainRecordBasicMap">
+        <association property="employee" javaType="Employee" resultMap="com.bay.dao.EmployeeDao.employeeBasicMap"/>
+        <association property="train" javaType="Train" resultMap="com.bay.dao.TrainDao.trainBasicMap"/>
+    </resultMap>
+    <insert id="addTrainRecord" parameterType="TrainRecord">
+        <selectKey keyProperty="trId" order="BEFORE" resultType="Integer">
+          SELECT aa.nextval FROM dual
+        </selectKey>
+        INSERT INTO HRMS.TRAIN_RECORD(TR_ID, EMPLOYEE_ID, TRAIN_ID) VALUES (#{trId},#{employeeId},#{trainId})
+    </insert>
+
+
+</mapper>

@@ -2,6 +2,7 @@ package com.bay.dao;
 
 
 import com.bay.model.Department;
+import com.bay.model.Position;
 
 import java.util.List;
 
@@ -15,6 +16,10 @@ public interface DepartmentDao {
     boolean updateDepartment(Department department);
     boolean deleteDepartment(Department department);
     Department queryDepartment(Department department);
-    List<Department> departmentList(Department department);
+//    List<Department> departmentList(Department department);
     List<Department> departmentList();
+
+
+    List<Department> depEmpExistList();
+
 }

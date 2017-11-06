@@ -9,9 +9,11 @@ import java.util.List;
  * No cross no  crown.
  */
 public interface EmployeeService {
-    boolean addEmployee(Employee employee);
+    String  addEmployee(Employee employee);
     Employee queryEmployeeByEmpidAndPassword(Employee employee);
     List<Employee> employeeList();
-    List<Employee> employeeList(Integer id);
 
+    String  updateEmployee(Employee employee);
+
+    Employee queryEmployeeDetail(Integer empId);
 }

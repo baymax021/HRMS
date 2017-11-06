@@ -86,7 +86,7 @@
             </p>
             <p>
                 <span class="need">*</span>自我评价：<textarea name="selfEvaluation" cols="40" rows="8"></textarea>
-                <span class="need">*</span>上传头像：<input type="file" name="image">
+                <span class="need">*</span>上传头像：<input type="file" name="photo">
             </p>
             <input type="button" id="save_basic" value="保存">
             <input type="button" id="res" value="重置">

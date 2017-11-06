@@ -3,16 +3,51 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bay.dao.PositionDao">
-    <resultMap id="positionMap" type="Position">
-        <id column="POS_ID" property="posId"/>
-        <result column="DEPARTMENT_ID" property="departmentId"/>
+    <resultMap id="positionBasicMap" type="Position">
+        <id column="POS_ID" property="posId" javaType="Integer"/>
+        <result column="DEPARTMENT_ID" property="departmentId" javaType="Integer"/>
         <result column="POS_NAME" property="posName"/>
-        <association property="department" javaType="Department" column=""/>
+    </resultMap>
+    <resultMap id="posAndDepMap" type="Position" extends="positionBasicMap">
+        <association property="department" javaType="Department"  resultMap="com.bay.dao.DepartmentDao.departmentBasicMap"/>
     </resultMap>
 
-    <insert id="">
+    <resultMap id="positionAndEmpMap" type="Position" extends="positionBasicMap">
+        <collection property="employeeList" ofType="Employee" resultMap="com.bay.dao.EmployeeDao.employeeBasicMap"/>
+    </resultMap>
 
+
+
+    <insert id="addPosition" parameterType="Position">
+        <selectKey keyProperty="posId" resultType="Integer" order="BEFORE">
+            SELECT HRMS.AA.nextval FROM dual
+        </selectKey>
+        INSERT INTO HRMS.POSITION
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="posId!=null">POS_ID,</if>
+            <if test="departmentId!=null">DEPARTMENT_ID,</if>
+            <if test="posName!=null">POS_NAME</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="posId!=null">#{posId},</if>
+            <if test="departmentId!=null">#{departmentId},</if>
+            <if test="posName!=null">#{posName}</if>
+        </trim>
     </insert>
+    <update id="updatePosition" parameterType="Position">
+        UPDATE HRMS.POSITION SET POS_NAME = #{posName} WHERE POS_ID=#{posId}
+    </update>
+    <delete id="deletePosition" parameterType="Integer">
+        DELETE FROM HRMS.POSITION WHERE POS_ID=#{posId}
+    </delete>
+
+
+    <select id="queryPositionAndEmp" parameterType="Integer" resultMap="positionAndEmpMap">
+        select * from HRMS.POSITION p LEFT JOIN  HRMS.EMPLOYEE e ON p.POS_ID = e.POSITION_ID WHERE p.POS_ID =#{posId}
+    </select>
+
+
 
 
 </mapper>

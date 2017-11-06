@@ -1,0 +1,832 @@
+    <style>
+
+
+        /*#main_header {*/
+            /*width: auto;*/
+            /*height: auto;*/
+            /*color: white;*/
+            /*background-color: #252661;*/
+            /*padding: 15px 40px;*/
+            /*line-height: 30px;*/
+        /*}*/
+
+        /*#header_left {*/
+            /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+            /*font-size: 30px;*/
+        /*}*/
+
+        /*.header_right {*/
+            /*color: white;*/
+            /*font-size: 20px;*/
+            /*float: right;*/
+        /*}*/
+
+        /*#left_win {*/
+            /*border: 1px black solid;*/
+            /*padding: 10px 5px 5px 0px;*/
+            /*width: 13%;*/
+            /*height: 100%;*/
+            /*float: left;*/
+        /*}*/
+
+        /*#right_win {*/
+            /*border: 1px black solid;*/
+            /*padding: 10px 5px 5px 10px;*/
+            /*width: 85%;*/
+            /*height: 100%;*/
+            /*float: right;*/
+        /*}*/
+
+        /*#down {*/
+            /*border: 1px black solid;*/
+            /*width: 100%;*/
+            /*height: auto;*/
+        /*}*/
+
+        /*.first_menu {*/
+            /*font-size: 18px;*/
+            /*color: white;*/
+            /*border: 1px #d0d0d0 solid;*/
+            /*border-radius: 5px;*/
+            /*background-color: #313290;*/
+            /*margin: 0px;*/
+            /*text-align: left;*/
+            /*padding: 5px 0px 5px 15px;*/
+            /*width: auto;*/
+        /*}*/
+
+        /*.second_menu {*/
+            /*list-style: none;*/
+            /*margin: 0px;*/
+            /*padding-left: 30px;*/
+            /*background-color: rgba(131, 126, 225, 0.48);*/
+            /*display: none;*/
+
+        /*}*/
+
+        /*.menu_big, .menu_dh {*/
+            /*list-style: none;*/
+            /*padding: 0px;*/
+            /*margin: 0;*/
+        /*}*/
+
+        /*.third_menu {*/
+            /*margin: 1px 0px;*/
+            /*list-style: none;*/
+            /*padding: 3px 0px;*/
+        /*}*/
+
+        /*table {*/
+            /*width: 100%;*/
+        /*}*/
+
+        /*th {*/
+            /*color: white;*/
+            /*background-color: #181a74;*/
+        /*}*/
+
+        /*th, td {*/
+            /*padding: 5px 10px;*/
+            /*width: auto;*/
+            /*text-align: center;*/
+        /*}*/
+
+        /*.line {*/
+            /*list-style: none;*/
+            /*margin: 0px;*/
+        /*}*/
+
+        /*.dep {*/
+            /*border: none;*/
+            /*font-size: 15px;*/
+            /*background: none;*/
+            /*text-align: center;*/
+            /*padding: 0;*/
+        /*}*/
+
+        /*.form_con {*/
+            /*width: 100%;*/
+            /*text-align: center;*/
+        /*}*/
+
+        /*!*.first_ul, .second_ul {*!*/
+        /*!*list-style: none;*!*/
+        /*!*float: left;*!*/
+        /*!*margin: 0;*!*/
+        /*!*padding: 0;*!*/
+        /*!*}*!*/
+
+        /*!*.first_ul {*!*/
+        /*!*!*width: 100%;*!*!*/
+        /*!*}*!*/
+
+        /*.oper, .depId {*/
+            /*background-color: #285c96;*/
+        /*}*/
+
+        /*.depName {*/
+            /*background-color: rgba(38, 86, 143, 0.43);*/
+        /*}*/
+
+        /*.posId {*/
+            /*background-color: rgba(36, 79, 133, 0.78);*/
+        /*}*/
+
+        /*.posName {*/
+            /*background-color: rgba(56, 150, 226, 0.78);*/
+        /*}*/
+
+        /*.depOper {*/
+            /*background-color: rgba(38, 0, 243, 0.19);*/
+        /*}*/
+
+        /*.posNone {*/
+            /*background-color: rgba(98, 121, 204, 0.7);*/
+        /*}*/
+
+        /*#dep_add {*/
+            /*background-color: #181a74;*/
+            /*color: white;*/
+            /*padding: 5px 15px;*/
+        /*}*/
+
+        /*#unview {*/
+            /*display: none;*/
+            /*position: fixed;*/
+            /*top: 150px;*/
+            /*left: 550px;*/
+            /*z-index: -1;*/
+        /*}*/
+
+        /*!*ul{*!*/
+        /*!*list-style: none;*!*/
+        /*!*float: left;*!*/
+        /*!*margin: 0;*!*/
+        /*!*padding: 0;*!*/
+        /*!*}*!*/
+        /*!*li{*!*/
+        /*!*border: 0px solid black;*!*/
+        /*!*width: 100px;*!*/
+        /*!*text-align: center;*!*/
+        /*!*list-style: none;*!*/
+        /*!*float: left;*!*/
+        /*!*margin: 0;*!*/
+        /*!*padding: 0;*!*/
+        /*!*}*!*/
+
+        /*!*新增职位弹窗CSS样式*!*/
+        /*.in1 {*/
+            /*width: 100px;*/
+            /*text-align: left;*/
+            /*display: inline-block;*/
+        /*}*/
+
+        /*.in2 {*/
+            /*width: 220px;*/
+            /*text-align: left;*/
+            /*display: inline-block;*/
+        /*}*/
+
+        /*#big {*/
+            /*background-color: white;*/
+            /*text-align: center;*/
+            /*padding: 20px 30px;*/
+            /*border: 1px solid rgba(61, 122, 217, 0.85);*/
+            /*border-radius: 5px;*/
+            /*width: 400px;*/
+            /*height: 300px;*/
+            /*box-shadow: 0 0 3px #000;*/
+        /*}*/
+
+        /*.add_position, .li_1 {*/
+            /*list-style: none;*/
+            /*margin: 3px 0px;*/
+            /*padding: 0px;*/
+        /*}*/
+
+        /*#small2 {*/
+            /*text-align: center;*/
+            /*position: absolute;*/
+            /*width: 400px;*/
+            /*top: 230px;*/
+        /*}*/
+
+        /*#small1 {*/
+            /*overflow-y: auto;*/
+            /*width: 400px;*/
+            /*height: 200px;*/
+        /*}*/
+
+        /*#add_oper {*/
+            /*border: 1px solid #6989f5;*/
+            /*background-color: #6989f5;*/
+            /*border-radius: 2px;*/
+            /*padding: 1px 10px;*/
+        /*}*/
+
+        /*.btn {*/
+            /*font-size: 15px;*/
+            /*padding: 2px 15px;*/
+            /*border-radius: 3px;*/
+            /*border: 1px solid gray;*/
+        /*}*/
+
+        /*!************************!*/
+
+        /*.first_ul, #head_ul {*/
+            /*list-style: none;*/
+            /*float: left;*/
+            /*margin: 0;*/
+            /*padding: 0;*/
+        /*}*/
+
+        /*.first_line {*/
+            /*width: 220px;*/
+            /*text-align: center;*/
+            /*list-style: none;*/
+            /*float: left;*/
+            /*margin: 1px;*/
+            /*padding: 0;*/
+            /*height: 50px;*/
+            /*line-height: 50px;*/
+            /*color: white;*/
+            /*background-color: #181a74;*/
+        /*}*/
+
+        /*.second_ul {*/
+            /*list-style: none;*/
+            /*float: left;*/
+            /*margin: 0;*/
+            /*padding: 0;*/
+        /*}*/
+
+        /*.depId, .oper, .depName {*/
+
+            /*border: 0px solid black;*/
+            /*width: 220px;*/
+            /*text-align: center;*/
+            /*list-style: none;*/
+            /*float: left;*/
+            /*margin: 1px 1px;*/
+            /*padding: 0;*/
+            /*text-align: center;*/
+
+        /*}*/
+
+        /*.posNone {*/
+            /*border: 0px solid black;*/
+            /*width: 442px;*/
+            /*text-align: center;*/
+            /*list-style: none;*/
+            /*float: left;*/
+            /*margin: 1px 1px;*/
+            /*padding: 0;*/
+            /*text-align: center;*/
+        /*}*/
+
+        /*.posId, .posName, .depOper {*/
+
+            /*border: 0px solid black;*/
+            /*width: 220px;*/
+            /*text-align: center;*/
+            /*list-style: none;*/
+            /*float: left;*/
+            /*margin: 0;*/
+            /*padding: 0px;*/
+            /*text-align: center;*/
+        /*}*/
+
+        /*.last_ul {*/
+            /*text-align: center;*/
+            /*list-style: none;*/
+            /*float: left;*/
+            /*margin: 0;*/
+            /*padding: 0;*/
+            /*line-height: 50px;*/
+            /*color: white;*/
+            /*background-color: #181a74;*/
+        /*}*/
+
+        /*#dep_add {*/
+            /*border: 0px solid black;*/
+            /*width: 1108px;*/
+            /*height: 50px;*/
+            /*line-height: 50px;*/
+            /*text-align: center;*/
+            /*list-style: none;*/
+            /*float: left;*/
+            /*margin: 1px 1px;*/
+            /*padding: 0;*/
+            /*text-align: center;*/
+        /*}*/
+
+    </style>
+    <script>
+
+//        /**
+//         *
+//         * 时间格式转换工具
+//         *
+//         **/
+//        function formatDate(date) {
+//            var y = date.getFullYear();
+//            var m = date.getMonth() + 1;
+//            m = m < 10 ? ('0' + m) : m;
+//            var d = date.getDate();
+//            d = d < 10 ? ('0' + d) : d;
+//            var h = date.getHours();
+//            h = h < 10 ? ('0' + h) : h;
+//            var minute = date.getMinutes();
+//            minute = minute < 10 ? ('0' + minute) : minute;
+//            var second = date.getSeconds();
+//            second = second < 10 ? ('0' + second) : second;
+//            return y + '-' + m + '-' + d + '&nbsp;&nbsp;' + h + ':' + minute + ':' + second;
+//        };
+//
+//
+//        $(function () {
+//
+//
+//            $("#zp").click(function () {
+//                $(this).next().css('display', $(this).next().css('display') == 'none' ? 'block' : 'none');
+//                $(this).css('color', $(this).next().css('display') == 'none' ? 'white' : 'black');
+//                $(this).css('background-color', $(this).next().css('display') == 'none' ? '#313290' : '#6a76c8')
+//            });
+//            $("#rs").click(function () {
+//                $(this).next().css('display', $(this).next().css('display') == 'none' ? 'block' : 'none');
+//                $(this).css('color', $(this).next().css('display') == 'none' ? 'white' : 'black');
+//                $(this).css('background-color', $(this).next().css('display') == 'none' ? '#313290' : '#6a76c8')
+//            });
+//
+//
+//            /**
+//             *
+//             * 发布招聘信息
+//             *
+//             **/
+//            $("#pub_rec").click(function () {
+//                $("#right_win").load("page/admin/publishRecruitment.jsp");
+//            });
+//
+//
+//            /**
+//             *
+//             * 查看招聘信息
+//             *
+//             **/
+//            $("#query_rec").click(function () {
+//                $.ajax({
+//                    type: 'post',
+//                    url: 'recruitmentList',
+//                    data: null,
+//                    dataType: 'json',
+//                    success: function (date) {
+//                        var s = "";
+//                        s = s + "<table>";
+//                        s = s + "<tr>";
+//                        s = s + "<th>招聘岗位</th>";
+//                        s = s + "<th>月薪</th>";
+//                        s = s + "<th>工作内容</th>";
+//                        s = s + "<th>工作地点</th>";
+//                        s = s + "<th>其他要求</th>";
+//                        s = s + "<th>发布时间</th>";
+//                        s = s + "</tr>";
+//                        for (var i = 0; i < date.length; i++) {
+//                            s = s + "<tr>";
+//                            s = s + "<td>" + date[i].recPosition + "</td>";
+//                            s = s + "<td>" + date[i].recPay + "元/月</td>";
+//                            s = s + "<td>" + date[i].workContent + "</td>";
+//                            s = s + "<td>" + date[i].workAddress + "</td>";
+//                            s = s + "<td>" + date[i].otherRequirements + "</td>";
+//                            s = s + "<td>" + formatDate(new Date(date[i].createTime.time)) + "</td>";
+//                            s = s + "</tr>"
+//                        }
+//                        s = s + "</table>";
+//                        $("#right_win").html(s);
+//                    }
+//                })
+//
+//            });
+//
+//
+//            /**
+//             *
+//             * 查看应聘信息
+//             *
+//             **/
+//            $("#query_yp").click(function () {
+//                $.ajax({
+//                    type: 'post',
+//                    url: 'recordList',
+//                    dataType: 'json',
+//                    success: function (msg) {
+//                        var s = "";
+//                        s = s + "<table>";
+//                        s = s + "<tr>";
+//                        s = s + "<th>应聘岗位</th>";
+//                        s = s + "<th>最近更新时间</th>";
+//                        s = s + "<th>当前状态</th>";
+//                        s = s + "<th colspan='2'>操作</th>";
+//                        s = s + "</tr>";
+//                        if (msg.length == 0) {
+//                            s = s + "<tr>";
+//                            s = s + "<td colspan='4'>还没有人来应聘</td>";
+//                            s = s + "</tr>";
+//                        } else {
+//                            for (var i = 0; i < msg.length; i++) {
+//                                s = s + "<tr>";
+//                                s = s + "<td>" + msg[i].recruitment.recPosition + "</td>";
+//                                s = s + "<td>" + formatDate(new Date(msg[i].updateTime.time)) + "</td>";
+//                                s = s + "<td>" + msg[i].label + "</td>";
+//                                s = s + "<td><a id=" + msg[i].drId + " onclick='update_label(" + msg[i].drId + ")'>" + (msg[i].label == "已投递" ? "查阅" : (msg[i].label == "已查阅" ? "发送面试邀请" : (msg[i].label == "已邀请" ? "等待对方确认" : "录用"))) + "</a> </td>";
+//                                s = s + "<td><a onclick='query_resume(" + msg[i].drId + ")'>查看简历</a> </td>";
+//                                s = s + "</tr>";
+//                            }
+//                        }
+//                        s = s + "</table>";
+//                        $("#right_win").html(s);
+//                    }
+//                })
+//            })
+//
+//
+//            /**
+//             *
+//             * 查看部门和职位设置信息
+//             *
+//             **/
+//            $("#query_dep").click(function () {
+//                $.ajax({
+//                    type: 'post',
+//                    url: 'departmentList',
+//                    data: null,
+//                    dataType: 'json',
+//                    success: function (data) {
+//
+//                        var s = "";
+//                        s = "<ul id='head_ul'>\n" +
+//                            "        <li class='first_line'>部门编号</li>\n" +
+//                            "        <li class='first_line'>部门名称</li>\n" +
+//                            "        <li class='first_line'>职位编号</li>\n" +
+//                            "        <li class='first_line'>职位名称</li>\n" +
+//                            "        <li class='first_line'>操作</li>\n" +
+//                            "    </ul>\n";
+//                        for (var i = 0; i < data.length; i++) {
+//                            s = s + "<form action='update_dep' id='" + data[i].depId + "' method='post'>"
+//                            s = s + "<div class='form_con'>";
+//                            if (data[i].positionList.length > 0 && data[i].positionList.length < 4) {
+//                                s = s + "    <ul class='first_ul'>\n" +
+//                                    "        <li class='depId' style='line-height: 80px' >" + data[i].depId + "<input type='text' hidden name='depId' value='" + data[i].depId + "'></li>\n" +
+//                                    "        <li class='depName' style='line-height: 80px' ><input class='dep' name='depName' readonly value=" + data[i].depName + "></li>\n";
+//                                s = s + "<li class='depId'>";
+//                                s = s + "<ul class='second_ul'>";
+//                                var a = 80 / data[i].positionList.length;
+//                                for (var j = 0; j < data[i].positionList.length; j++) {
+//                                    s = s + "    <li class='posId' style='line-height:" + a + "px' >" + data[i].positionList[j].posId + "</li>\n";
+//                                }
+//                                s = s + "</ul>";
+//                                s = s + "</li>";
+//                                s = s + "<li class='depId'>";
+//                                s = s + "<ul class='second_ul'>"
+//                                for (var j = 0; j < data[i].positionList.length; j++) {
+//                                    s = s + "    <li class='posName' style='line-height:" + a + "px'><input type='text'  name='posId' value='" + data[i].positionList[j].posId + "' hidden><input class='dep' name='posName' readonly value=" + data[i].positionList[j].posName + "></li>\n";
+//                                }
+//                                s = s + "</ul>";
+//                                s = s + "</li>";
+//                                s = s + "<li class='oper' id='oper" + data[i].depId + "'>";
+//                                s = s + "<ul class='second_ul'>"
+//                                s = s + "    <li class='depOper' style='line-height: 20px' ><span onclick='dep_del(" + data[i].depId + ")'>删除整个部门</span></li>\n";
+//                                s = s + "    <li class='depOper' style='line-height: 20px'><span onclick='dep_update(" + data[i].depId + ")' >修改部门或职位</span></li>\n";
+//                                s = s + "    <li class='depOper' style='line-height: 20px'><span onclick='pos_del(" + data[i].depId + ")'>删除职位</span></li>\n";
+//                                s = s + "    <li class='depOper' style='line-height: 20px'><span onclick='pos_add(" + data[i].depId + ")'>新增职位</span></li>\n";
+//                                s = s + "</ul>";
+//                                s = s + "</li>";
+//                            } else if (data[i].positionList.length == 4) {
+//                                s = s + "    <ul class='first_ul'>\n" +
+//                                    "        <li class='depId' style='line-height: 80px' >" + data[i].depId + "</li>\n" +
+//                                    "        <li class='depName' style='line-height: 80px' ><input class='dep' name='depName' readonly value=" + data[i].depName + "></li>\n";
+//                                s = s + "<li class='depId'>";
+//                                s = s + "<ul class='second_ul'>";
+//                                for (var j = 0; j < data[i].positionList.length; j++) {
+//                                    s = s + "    <li class='posId' style='line-height:20px' >" + data[i].positionList[j].posId + "</li>\n";
+//                                }
+//                                s = s + "</ul>";
+//                                s = s + "</li>";
+//                                s = s + "<li class='depId'>";
+//                                s = s + "<ul class='second_ul'>"
+//                                for (var j = 0; j < data[i].positionList.length; j++) {
+//                                    s = s + "    <li class='posName' style='line-height: 20px'><input class='dep' name='posName' readonly value=" + data[i].positionList[j].posName + "></li>\n";
+//                                }
+//                                s = s + "</ul>";
+//                                s = s + "</li>";
+//                                s = s + "<li class='oper' id='oper" + data[i].depId + "'>";
+//                                s = s + "<ul class='second_ul'>"
+//                                s = s + "    <li class='depOper' style='line-height: 20px' ><span onclick='dep_del(" + data[i].depId + ")'>删除整个部门</span></li>\n";
+//                                s = s + "    <li class='depOper' style='line-height: 20px'><span onclick='dep_update(" + data[i].depId + ")' >修改部门或职位</span></li>\n";
+//                                s = s + "    <li class='depOper' style='line-height: 20px'><span onclick='pos_del(" + data[i].depId + ")'>删除职位</span></li>\n";
+//                                s = s + "    <li class='depOper' style='line-height: 20px'><span onclick='pos_add(" + data[i].depId + ")'>新增职位</span></li>\n";
+//                                s = s + "</ul>";
+//                                s = s + "</li>";
+//                            } else if (data[i].positionList.length > 4) {
+//                                var b = 20 * data[i].positionList.length;
+//                                s = s + "    <ul class='first_ul'>\n" +
+//                                    "        <li class='depId' style='line-height: " + b + "px' >" + data[i].depId + "</li>\n" +
+//                                    "        <li class='depName' style='line-height: " + b + "px' ><input class='dep' name='depName' readonly value=" + data[i].depName + "></li>\n";
+//                                s = s + "<li class='depId'>";
+//                                s = s + "<ul class='second_ul'>";
+//                                for (var j = 0; j < data[i].positionList.length; j++) {
+//                                    s = s + "    <li class='posId' style='line-height: 20px' >" + data[i].positionList[j].posId + "</li>\n";
+//                                }
+//                                s = s + "</ul>";
+//                                s = s + "</li>";
+//                                s = s + "<li class='depId'>";
+//                                s = s + "<ul class='second_ul'>"
+//                                for (var j = 0; j < data[i].positionList.length; j++) {
+//                                    s = s + "    <li class='posName' style='line-height: 20px'><input class='dep' name='posName' readonly value=" + data[i].positionList[j].posName + "></li>\n";
+//                                }
+//                                s = s + "</ul>";
+//                                s = s + "</li>";
+//                                s = s + "<li class='oper' id='oper" + data[i].depId + "'>";
+//                                s = s + "<ul class='second_ul'>"
+//                                s = s + "    <li class='depOper' style='line-height: " + (b / 4) + "px' ><span onclick='dep_del(" + data[i].depId + ")'>删除整个部门</span></li>\n";
+//                                s = s + "    <li class='depOper' style='line-height: " + (b / 4) + "px'><span onclick='dep_update(" + data[i].depId + ")' >修改部门或职位</span></li>\n";
+//                                s = s + "    <li class='depOper' style='line-height: " + (b / 4) + "px'><span onclick='pos_del(" + data[i].depId + ")'>删除职位</span></li>\n";
+//                                s = s + "    <li class='depOper' style='line-height: " + (b / 4) + "px'><span onclick='pos_add(" + data[i].depId + ")'>新增职位</span></li>\n";
+//                                s = s + "</ul>";
+//                                s = s + "</li>";
+//                            } else if (data[i].positionList.length == 0) {
+//                                s = s + " <ul class='first_ul'>\n" +
+//                                    "        <li class='depId' style='line-height: 60px'>" + data[i].depId + "</li>\n" +
+//                                    "        <li class='depName' style='line-height: 60px'><input class='dep' name='depName' readonly value=" + data[i].depName + "></li>\n";
+//                                s = s + "        <li class='posNone' style='line-height: 60px' >暂无职位</li>\n";
+//                                s = s + "        <li class='oper' id='oper" + data[i].depId + "'>";
+//                                s = s + "               <ul class='second_ul'>"
+//                                s = s + "                    <li class='depOper' style='line-height: 20px'><span onclick='dep_del(" + data[i].depId + ")'>删除整个部门</span></li>\n";
+//                                s = s + "                       <li class='depOper' style='line-height: 20px'><span onclick='dep_update(" + data[i].depId + ")' >修改部门</span></li>\n";
+//                                s = s + "                    <li class='depOper' style='line-height: 20px'><span onclick='pos_add(" + data[i].depId + ")'>新增职位</span></li>\n";
+//                                s = s + "               </ul>";
+//                                s = s + "        </li>";
+//                                s = s + "</ul>";
+//                            }
+//                            s = s + "</div>";
+//                            s = s + "</form>";
+//
+//                        }
+//
+//                        s = s + "<ul class='last_ul'>";
+//                        s = s + "<li  id='dep_add' onclick='dep_add()'>新增部门</li>";
+//                        s = s + "</ul>";
+//
+//                        $("#right_win").html(s);
+//
+////                        var s = "";
+////                        s = "<table>\n" +
+////                            "    <tr>\n" +
+////                            "        <th>部门编号</th>\n" +
+////                            "        <th>部门名称</th>\n" +
+////                            "        <th>职位编号</th>\n" +
+////                            "        <th>职位名称</th>\n" +
+////                            "        <th >操作</th>\n" +
+////                            "    </tr>\n";
+////                        for (var i = 0; i < data.length; i++) {
+////                            s=s+"<form action='update_dep' id='"+data[i].depId+"' method='post'>"
+////                            s = s + "    <tr>\n" +
+////                                "        <td class='depId' rowspan=" + data[i].positionList.length + ">" + data[i].depId + "</td>\n" +
+////                                "        <td class='depName' rowspan=" + data[i].positionList.length + "><input class='dep' name='depName' readonly value=" + data[i].depName + "></td>\n";
+////                            if (data[i].positionList.length != 0) {
+////                                for (var j = 0; j < data[i].positionList.length; j++) {
+////                                    if (j == 0) {
+////                                        s = s + "    <td class='posId'>" + data[i].positionList[j].posId + "</td>\n" +
+////                                            "<td class='posName'><input class='dep' name='posName' readonly value=" + data[i].positionList[j].posName + "></td>\n";
+////                                        s = s + "<td class='depOper' rowspan=" + data[i].positionList.length + "><span onclick='dep_del("+data[i].depId+")'>删除整个部门</span><br><span onclick='dep_update("+data[i].depId+")' >修改部门或职位</span><br><span onclick='pos_del("+data[i].depId+")'>删除职位</span><br><span onclick='pos_add("+data[i].depId+")'>新增职位</span></td>"
+////                                    } else {
+////                                        s = s + "<tr>";
+////                                        s = s + " <td class='posId' >" + data[i].positionList[j].posId + "</td><input type='text' name='posId' hidden value='"+data[i].positionList[j].posId+"'>\n" +
+////                                            "<td class='posName'><input class='dep' name='posName' readonly value=" + data[i].positionList[j].posName + "></td>\n";
+////                                        s = s + "</tr>";
+////                                    }
+////
+////                                }
+////                            } else {
+////                                s = s + "<td class='posNone' colspan='2'>暂无职位</td>";
+////                                s = s + "<td class='depOper' ><span onclick='dep_del("+data[i].depId+")'>删除整个部门</span><br><span onclick='dep_update("+data[i].depId+")' >修改部门</span><br><span onclick='pos_del("+data[i].depId+")'>删除职位</span><br><span onclick='pos_add("+data[i].depId+")'>新增职位</span></td>"
+////                            }
+////
+////                            s = s + "    </tr>\n";
+////                            s=s+"</form>";
+////                        }
+////                        s = s + "<tr id='dep_add_'>\n" +
+////                            "        <td colspan=\"5\" id='dep_add' onclick='dep_add()' >新增部门</td>\n" +
+////                            "    </tr>"
+////                        s = s + "</table>";
+////                        $("#right_win").html(s);
+//                    }
+//
+//                })
+//
+//            });
+//
+//        })
+//        ;
+//
+//        function dep_add() {
+//            $("#unview").css('display', 'block');
+//            $("#unview").css('z-index', '1000');
+//            $("#unview").load("page/admin/addDepartmentAndPosition.jsp");
+//        }
+//
+//        function dep_del(n) {
+//            $.ajax({
+//                type: 'post',
+//                url: 'dep_del',
+//                data: 'depId=' + n,
+//                dataType: 'json',
+//                success: function (msg) {
+//                    alert(msg.info)
+//                    $("#query_dep").click()
+//                }
+//            })
+//
+//        }
+//
+//        function dep_update(n) {
+//            var oper = $("#oper" + n + "");
+//            var oper_height = oper.height();
+//            var my_form = $("#" + n + "");
+//            my_form.find("input").attr("readOnly", false);
+//            var s = "<span class=\"dep_btn\" onclick=\"sub_update(" + n + ")\" >确认</span>\n";
+//            $(".dep_btn").attr('height', "" + oper_height + "");
+//            oper.css('background-color', 'white');
+//            oper.html(s);
+//
+//        }
+//
+//        function sub_update(n) {
+//            alert(1)
+//            $.ajax({
+//                type: "POST",
+//                url: "updateDepAndPos",
+//                data: $("#" + n + "").serialize(),
+//                async: false,
+//                dataType: 'json',
+//                success: function (data) {
+//                    alert(data.info);
+//                    $("#unview").css('display', 'none');
+//                    $("#unview").css('z-index', '-1');
+//                    $("#query_dep").click();
+//                }
+//            })
+//        }
+//
+//
+//        function pos_add(n) {
+//           var depName = $("#" + n + "").find("input[name='depName']").val();
+//            var s = "<div id=\"big\">\n" +
+//                "    <form id=\"depAndPos\" action=\"addPos\" method=\"post\">\n" +
+//                "        <div id=\"small1\">\n" +
+//                "            <span class=\"in1\">部门名称</span> <span class=\"in2\">"+depName+"</span>\n" +
+//                "            <input type=\"text\" name=\"depStatus\" value=\"NORMAL\" hidden>\n" +
+//                "            <hr id=\"line_1\">\n" +
+//                "            <ul class=\"add_position\"></ul>\n" +
+//                "\n" +
+//                "        </div>\n" +
+//                "\n" +
+//                "        <div id=\"small2\">\n" +
+//                "            <p><span id=\"add_oper\">添加职位（可选）</span></p>\n" +
+//                "            <span class=\"btn\" onclick=\"sub_dep()\" >确认</span> <input class=\"btn\" type=\"button\" id=\"cancel_dep\" value=\"取消\">\n" +
+//                "        </div>\n" +
+//                "    </form>\n" +
+//                "</div>"
+//            $("#unview").css('display', 'block');
+//            $("#unview").css('z-index', '1000');
+//            $("#unview").html(s);
+//        }
+//
+//        $(function () {
+//
+//            $("#cancel_dep").click(function () {
+//                $("#unview").css('display', 'none');
+//                $("#unview").css('z-index', '-1');
+//
+//            })
+//
+//
+//            $("#add_oper").click(function () {
+//                var li = $("<li class='li_1'><span class=\"in1\">职位名称</span><span class=\"in2\"><input type=\"text\" name=\"posName\"></span></li>");
+//                $(".add_position").append(li);
+//            })
+//        })
+//
+//
+//        /**
+//         *
+//         * 创建新的部门
+//         *
+//         **/
+//        function sub_dep() {
+//            alert(1)
+//            $.ajax({
+//                type: "POST",
+//                url: "addDepAndPos",
+//                data: $('#depAndPos').serialize(),
+//                async: false,
+//                dataType: 'json',
+//                success: function (data) {
+//                    alert(data.info);
+//                    $("#unview").css('display', 'none');
+//                    $("#unview").css('z-index', '-1');
+//                    $("#query_dep").click();
+//                }
+//            })
+//        }
+//
+//
+//        /**
+//         *
+//         * 更新投递信息状态
+//         *
+//         **/
+//
+//        function update_label(n) {
+//            var text = document.getElementById(n).innerHTML;
+//            if (text == "查阅") {
+//                query_resume(n);
+//            } else if (text == "录用") {
+//
+//
+//            } else {
+//                $.ajax({
+//                    type: 'get',
+//                    url: 'update',
+//                    data: "drId=" + n,
+//                    dataType: 'json',
+//                    success: function (msg) {
+//                        alert(msg.info);
+//                        $("#query_yp").click();
+//                    }
+//                })
+//
+//            }
+//
+//        }
+//
+//        /**
+//         *
+//         * 录用员工操作
+//         *
+//         **/
+//        function hire(n) {
+//            $.ajax({
+//                type: 'get',
+//                url: 'hireNew',
+//                data: "drId=" + n,
+//                dataType: 'json',
+//                success: function (msg) {
+//                    alert(msg.info);
+//                    $("#query_yp").click();
+//                }
+//            })
+//        }
+//
+//
+//        /**
+//         *
+//         * 查看应聘者简历
+//         *
+//         **/
+//        function query_resume(n) {
+//            $.ajax({
+//                type: 'get',
+//                url: 'query_resume',
+//                data: "drId=" + n,
+//                dataType: 'json',
+//                success: function (msg) {
+//                    console.log(msg)
+//                }
+//            })
+//        }
+//
+//        /**
+//         *
+//         * 提交要发布的招聘信息
+//         *
+//         **/
+//        function pub() {
+//            var recPosition = document.getElementById("recPosition").value;
+//            var workContent = document.getElementById("workContent").value;
+//            var recPay = document.getElementById("recPay").value;
+//            var workAddress = document.getElementById("workAddress").value;
+//            var otherRequirements = document.getElementById("otherRequirements").value;
+//            $.ajax({
+//                type: 'post',
+//                url: 'publishRecruitment.do',
+//                data: "recPosition=" + recPosition + "&workContent=" + workContent + "&recPay=" + recPay + "&workAddress=" + workAddress + "&otherRequirements=" + otherRequirements,
+//                dataType: 'json',
+//                success: function (msg) {
+//                    alert(msg.info);
+//                    $("#query_rec").click();
+//                }
+//            })
+//        }
+
+    </script>

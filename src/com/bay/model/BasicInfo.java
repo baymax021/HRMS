@@ -26,7 +26,7 @@ public class BasicInfo {
     /**
      *  жЄМўее
      */
-    private String image;
+    private String photo;
     private String gender;
     private String dateOfBirth;
     private String phone;

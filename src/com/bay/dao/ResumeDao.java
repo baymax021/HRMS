@@ -14,4 +14,6 @@ public interface ResumeDao {
     Resume queryResumeById(Integer id);
     Resume reusmeByCid(Integer cId);
     Resume reusmeCid(Integer cId);
+
+    Resume reusmeByDrid(Integer drId);
 }

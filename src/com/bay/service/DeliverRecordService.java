@@ -13,7 +13,7 @@ import java.util.List;
 public interface DeliverRecordService {
     boolean addDeliverRecord(DeliverRecord deliverRecord);
 
-    boolean updateDeliverRecord(Integer drId,String label);
+    String updateDeliverRecord(Integer drId);
 
     DeliverRecord deliverRecord(Integer drId);
 

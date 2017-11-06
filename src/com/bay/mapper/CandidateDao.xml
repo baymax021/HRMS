@@ -3,14 +3,21 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bay.dao.CandidateDao">
-    <resultMap id="candidateMap" type="Candidate">
-        <id column="cid" property="cid" javaType="java.lang.Integer"/>
+    <resultMap id="candidateBasicMap" type="Candidate">
+        <id column="cid" property="cid" javaType="Integer"/>
         <result column="CAND_NAME" property="candName" javaType="String"/>
         <result column="PASSWORD" property="password" javaType="String"/>
         <result column="STATUS" property="status" javaType="String"/>
-        <association property="resume" javaType="Resume" column="cid" select="com.bay.dao.ResumeDao.reusmeCid"  />
-        <!--<collection property="resumes" ofType="Resume" select="com.bay.dao.ResumeDao.resumeList" column="cid"/>-->
     </resultMap>
+    <resultMap id="candAndResumeMap" type="Candidate" extends="candidateBasicMap">
+        <association property="resume" javaType="Resume" resultMap="com.bay.dao.ResumeDao.resumeBasicMap"/>
+    </resultMap>
+
+    <resultMap id="candAndResAllMap" type="Candidate" extends="candidateBasicMap">
+        <association property="resume" javaType="Resume" resultMap="com.bay.dao.ResumeDao.resumeAllMap"/>
+    </resultMap>
+
+
     <insert id="addCandidate" parameterType="Candidate">
         <selectKey keyProperty="cid" order="BEFORE" resultType="java.lang.Integer">
         SELECT HRMS.AA.nextval FROM dual
@@ -30,10 +37,13 @@
             <if test="status!= null">#{status}</if>
         </trim>
     </insert>
-    <select id="queryCandidate" parameterType="Candidate" resultMap="candidateMap">
-        SELECT * FROM HRMS.CANDIDATE
-        WHERE CAND_NAME = #{candName}
-        AND  PASSWORD = #{password}
+
+
+    <select id="queryCandidate" parameterType="Candidate" resultMap="candAndResumeMap">
+        SELECT * FROM HRMS.CANDIDATE can LEFT JOIN HRMS.RESUME r ON r.CANDIDATE_ID =can.CID
+        WHERE can.CAND_NAME = #{candName}
+        AND  can.PASSWORD = #{password}
+        AND can.STATUS = 'TRUE'
     </select>
 
 

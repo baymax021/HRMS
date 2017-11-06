@@ -12,4 +12,5 @@ public interface ResumeService {
     boolean addResume(Resume resume, BasicInfo basicInfo, List<Education> educations, List<WorkExperience> workExperiences , List<ProjectExperience> projectExperiences);
     Resume queryResumeById(Integer id);
     Resume reusmeByCid(Integer cId);
+    Resume reusmeByDrid(Integer drId);
 }

@@ -13,8 +13,12 @@ import java.util.List;
 public interface PositionDao {
     boolean addPosition(Position position);
     boolean updatePosition(Position position);
-    boolean deletePosition(Position position);
-    Position queryPosition(Position position);
+    boolean deletePosition(Integer posId);
+
+    Position queryPositionAndEmp(Integer posId);
+
+    Position queryPositionByDepId(Integer depId);
+
     List<Position> positionList(Position position);
     List<Position> positionList();
 }

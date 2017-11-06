@@ -14,8 +14,8 @@
         <result column="address" property="address" javaType="String"/>
         <result column="huji" property="huji" javaType="String"/>
         <result column="SELF_EVALUATION" property="selfEvaluation" javaType="String"/>
-        <result column="IMAGE" property="image" javaType="String"/>
-        <association property="resume" javaType="Resume" resultMap="com.bay.dao.ResumeDao.resumeMap"/>
+        <result column="photo" property="photo" javaType="String"/>
+        <!--<association property="resume" javaType="Resume" resultMap="com.bay.dao.ResumeDao.resumeMap"/>-->
     </resultMap>
     <insert id="addBasicInfo" parameterType="BasicInfo">
         <selectKey keyProperty="bid" resultType="java.lang.Integer" order="BEFORE">
@@ -33,7 +33,7 @@
             <if test="address!= null">address,</if>
             <if test="huji!= null">huji,</if>
             <if test="selfEvaluation!= null">SELF_EVALUATION,</if>
-            <if test="image!= null">image</if>
+            <if test="photo!= null">photo</if>
         </trim>
         VALUES
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -47,7 +47,7 @@
             <if test="address!= null">#{address},</if>
             <if test="huji!= null">#{huji},</if>
             <if test="selfEvaluation!= null">#{selfEvaluation},</if>
-            <if test="image!= null">#{image}</if>
+            <if test="photo!= null">#{photo}</if>
         </trim>
 
     </insert>

@@ -15,6 +15,7 @@
     <base href=" <%=basePath%>">
     <title>主页</title>
     <script src="js/jquery-3.0.0.js"></script>
+    <link rel="stylesheet" href="css/mystyle.css" type="text/css" charset="UTF-8">
     <style>
         #left_win {
             border: 1px black solid;
@@ -74,7 +75,7 @@
                         var s = "";
                         if (msg != null) {
                             s = s + "<span class='jl' >我的简历</span>";
-                            s = s + "<span class='jl' >预览</span>";
+                            s = s + "<span class='jl'  >预览</span>";
                             s = s + "<span  class='jl'>修改</span>";
                         } else {
                             s = s + "<span id='add_resume' onclick='add_resume()'>新建简历</span>";
