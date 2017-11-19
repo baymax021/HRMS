@@ -18,11 +18,11 @@
 </head>
 <body>
 <form id="pxInfo" >
-    <span class="in">培训主题</span>
-    <span class="in"><input type="text" name="tTitle"></span>
+    <span>培训主题</span>
+    <span ><input type="text" name="tTitle"></span>
     <br>
-    <span class="in">培训时间</span>
-    <span class="in">
+    <span >培训时间</span>
+    <span >
         <input type="datetime-local" name="tStartTime">&nbsp;~&nbsp;
         <input type="datetime-local" name="tEndTime">
     </span>

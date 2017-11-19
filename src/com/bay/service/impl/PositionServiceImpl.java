@@ -6,6 +6,7 @@ import com.bay.model.Position;
 import com.bay.service.PositionService;
 import com.bay.util.ObjectParseUtil;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.lang.reflect.InvocationTargetException;
@@ -16,6 +17,7 @@ import java.util.List;
  * No cross no  crown.
  */
 @Service
+@Transactional
 public class PositionServiceImpl implements PositionService {
     @Resource
     private PositionDao positionDao;

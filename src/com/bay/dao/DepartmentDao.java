@@ -22,4 +22,6 @@ public interface DepartmentDao {
 
     List<Department> depEmpExistList();
 
+    List<Department> depsAndEmployees();
+
 }

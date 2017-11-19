@@ -59,15 +59,28 @@
         </trim>
     </insert>
     <update id="updateEmployee" parameterType="Employee">
-        UPDATE EMPLOYEE SET PASSWORD = #{password} where EMP_ID = #{empId}
+        UPDATE EMPLOYEE SET
+        <trim suffixOverrides=",">
+            <if test="password !=null"> PASSWORD = #{password},</if>
+            <if test="empStatus !=null"> EMP_STATUS = #{empStatus},</if>
+            <if test="dimissionTime !=null"> DIMISSION_TIME = #{dimissionTime},</if>
+            <if test="positionId !=null"> POSITION_ID = #{positionId}</if>
+        </trim>
+         where EMP_ID = #{empId}
     </update>
 
     <select id="queryEmployee" parameterType="Employee" resultMap="employeeBasicMap">
-        SELECT * FROM HRMS.EMPLOYEE  WHERE  EMP_ID=#{empId} AND PASSWORD = #{password} and EMP_STATUS != '已离职'
+        SELECT * FROM HRMS.EMPLOYEE  WHERE  EMP_ID=#{empId} AND PASSWORD = #{password} and EMP_STATUS != '离职'
     </select>
 
     <select id="employeeList" resultMap="employeeAllMap">
-        SELECT * from HRMS.EMPLOYEE e LEFT JOIN HRMS.RESUME r ON e.RESUME_ID = r.RID LEFT JOIN HRMS.BASIC_INFO b ON  b.RESUME_ID = r.RID LEFT JOIN HRMS.POSITION p ON e.POSITION_ID=p.POS_ID LEFT JOIN HRMS.DEPARTMENT d ON d.DEP_ID=p.DEPARTMENT_ID
+        SELECT * from HRMS.EMPLOYEE e
+--         LEFT JOIN HRMS.RESUME r ON e.RESUME_ID = r.RID
+--         LEFT JOIN HRMS.BASIC_INFO b ON  b.RESUME_ID = r.RID
+        LEFT JOIN HRMS.POSITION p ON e.POSITION_ID=p.POS_ID
+        LEFT JOIN HRMS.DEPARTMENT d ON d.DEP_ID=p.DEPARTMENT_ID
+        WHERE EMP_TYPE='NORMAL'
+        ORDER BY EMP_ID
     </select>
     <select id="queryEmployeeDetail" parameterType="Integer" resultMap="employeeAllMap">
         SELECT * FROM HRMS.EMPLOYEE e
@@ -76,6 +89,10 @@
         LEFT JOIN HRMS.POSITION p ON p.POS_ID = e.POSITION_ID
         LEFT JOIN HRMS.DEPARTMENT d ON d.DEP_ID = p.DEPARTMENT_ID
         WHERE e.EMP_ID=#{empId}
+    </select>
+
+    <select id="findEmployeeById" parameterType="Integer" resultMap="employeeBasicMap">
+        SELECT * FROM EMPLOYEE WHERE EMP_ID = #{empId}
     </select>
 
 

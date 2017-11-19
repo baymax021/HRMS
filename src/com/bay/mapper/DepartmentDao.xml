@@ -55,4 +55,12 @@
     </select>
 
 
+    <select id="depsAndEmployees" resultMap="depAndPosAndEmpMap">
+         SELECT * from HRMS.EMPLOYEE e
+         LEFT JOIN HRMS.POSITION p ON e.POSITION_ID=p.POS_ID
+         LEFT JOIN HRMS.DEPARTMENT d ON d.DEP_ID=p.DEPARTMENT_ID
+        WHERE  EMP_TYPE ='NORMAL'
+    </select>
+
+
 </mapper>

@@ -98,7 +98,12 @@
 
 
     <script>
+        alert(formatDateLastMonth(new Date()))
 
+
+
+//       alert( formatDateGetMonth(new Date()))
+//        alert([1,2,3,4,5,6,7].contains(formatDateGetDate(new Date())))
         $(document).on("pagebeforecreate",function(){
             alert(2)
 
@@ -123,7 +128,10 @@
           console.log(array.contains(1))
 
         }
-
+        function formatDateHourGetDays(date) {
+            var days = new Date(date.getFullYear(),date.getMonth()+1,0).getDate();
+            return days;
+        };
 
 
 
@@ -166,15 +174,43 @@
     <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />-->
 <!--</head>-->
 <!--当前时间：-->
-<!--<div id="time" style="height: 50px;line-height: 50px;font-size: 30px">-->
-    <!--<script>-->
-        <!--document.getElementById('time').innerHTML = new Date().toLocaleString()-->
-            <!--+ ' 星期' + '日一二三四五六'.charAt(new Date().getDay());-->
-        <!--setInterval(-->
-            <!--"document.getElementById('time').innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());",-->
-            <!--1000);-->
-    <!--</script>-->
-<!--</div>-->
+<div id="time" style="height: 50px;line-height: 50px;font-size: 30px">
+    <script>
+
+//        alert((new Date('2018-01')).getMonth());
+
+
+
+        alert(new Date(new Date().getFullYear(),getLastMonth(new Date()).getMonth(),12))
+
+//
+//        alert((new Date('2018-12')).getMonth())
+//
+//        alert(getLastMonth(new Date('2018-01')))
+//        alert(formatDateGetDates(getLastMonth(new Date('2018-01'))))
+//        alert(formatDateGetDates());
+
+
+
+//        alert(new Date().getDay());
+//        alert(new Date(new Date().getFullYear(),formatDateGetMonth(new Date())-1,1))
+//
+//        alert(new Date(new Date().getFullYear(),new Date().getMonth()+1,1).getDate())
+        console.log(new Date())
+        document.getElementById('time').innerHTML = new Date().toLocaleString()
+            + ' 星期' + '日一二三四五六'.charAt(new Date().getDay());
+        setInterval(
+            "document.getElementById('time').innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());",
+            1000);
+        window.onload=function () {
+            console.log($("#1"))
+        }
+
+
+
+
+    </script>
+</div>
 <!--<body>-->
 <!--</body>-->
 <!--</html>-->
@@ -184,37 +220,49 @@
     <!--&lt;!&ndash;<input type="checkbox" onclick="test()" id="3" value="3"  name="dep">3&ndash;&gt;-->
 <!--&lt;!&ndash;</div>&ndash;&gt;-->
 
-<!--&lt;!&ndash;<div>&ndash;&gt;-->
-    <!--&lt;!&ndash;<input type="checkbox" value="11"  name="pos">a&ndash;&gt;-->
-    <!--&lt;!&ndash;<input type="checkbox" value="12"  name="pos">b&ndash;&gt;-->
-    <!--&lt;!&ndash;<input type="checkbox" value="13"  name="pos">c&ndash;&gt;-->
-    <!--&lt;!&ndash;<input type="checkbox" value="14"  name="pos">d&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--<div>-->
+    <!--<input type="checkbox" value="11"  name="pos">a-->
+    <!--<input type="checkbox" value="12"  name="pos">b-->
+    <!--<input type="checkbox" value="13"  name="pos">c-->
+    <!--<input type="checkbox" value="14"  name="pos">d-->
+<!--</div>-->
 
 
-
-
+<!--<div id="currentTime" style="width: auto;height: 300px;font-size: 100px">
+    <script>
+        document.getElementById("currentTime").innerHTML = new Date().toLocaleString() + '星期' + '日一二三四五六'.charAt(new Date().getDay());
+        setInterval(
+            document.getElementById("currentTime").innerHTML = new Date().toLocaleString() + '星期' + '日一二三四五六'.charAt(new Date().getDay()), 1000
+        )
+    </script>
+</div>-->
+<select name="depName" id="depName">
+    <option value="">所属部门</option>
+    <option value="">所属部门</option>
+    <option value="">所属部门</option>
+    <option value="">所属部门</option>
+</select>
 
 
 <!--&lt;!&ndash;<form action="">&ndash;&gt;-->
-<!--&lt;!&ndash;<ul class="ul1">&ndash;&gt;-->
-    <!--&lt;!&ndash;<li class="li1">233ee</li>&ndash;&gt;-->
-    <!--&lt;!&ndash;<li class="li1">233ee</li>&ndash;&gt;-->
-    <!--&lt;!&ndash;<li class="li1">&ndash;&gt;-->
-        <!--&lt;!&ndash;<ul class="ul2">&ndash;&gt;-->
-            <!--&lt;!&ndash;<li class="li2"><a style="line-height: 100px">aaa</a></li>&ndash;&gt;-->
-            <!--&lt;!&ndash;<li class="li2">333</li>&ndash;&gt;-->
-            <!--&lt;!&ndash;<li class="li2">333</li>&ndash;&gt;-->
-        <!--&lt;!&ndash;</ul>&ndash;&gt;-->
-    <!--&lt;!&ndash;</li>&ndash;&gt;-->
-    <!--&lt;!&ndash;<li class="li1">&ndash;&gt;-->
-        <!--&lt;!&ndash;<ul class="ul2">&ndash;&gt;-->
-            <!--&lt;!&ndash;<li class="li2">333</li>&ndash;&gt;-->
-            <!--&lt;!&ndash;<li class="li2">333</li>&ndash;&gt;-->
-            <!--&lt;!&ndash;<li class="li2">333</li>&ndash;&gt;-->
-        <!--&lt;!&ndash;</ul>&ndash;&gt;-->
-    <!--&lt;!&ndash;</li>&ndash;&gt;-->
-<!--&lt;!&ndash;</ul>&ndash;&gt;-->
+<ul class="ul1">
+    <li class="li1">233ee</li>
+    <li class="li1">233ee</li>
+    <li class="li1">
+        <ul class="ul2">
+            <li class="li2"><a style="line-height: 100px">aaa</a></li>
+            <li class="li2">333</li>
+            <li class="li2">333</li>
+        </ul>
+    </li>
+    <li class="li1">
+        <ul class="ul2">
+            <li class="li2">333</li>
+            <li class="li2" id="1">333</li>
+            <li class="li2">333</li>
+        </ul>
+    </li>
+</ul>
 
     <!--&lt;!&ndash;<span class="dep_btn" onclick="sub_update()" >确认</span>&ndash;&gt;-->
     <!--&lt;!&ndash;<input class="dep_btn" type="button" id="cancel_dep" value="取消">&ndash;&gt;-->

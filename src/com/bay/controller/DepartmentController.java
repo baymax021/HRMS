@@ -102,5 +102,18 @@ public class DepartmentController {
         }
     }
 
+    @RequestMapping(value = "/depsAndEmployees", method = {RequestMethod.POST,RequestMethod.GET},produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public void depsAndEmployees(HttpServletResponse response){
+        List<Department> depsAndEmployees =  departmentService.depsAndEmployees();
+        JSONArray jsonArray = JSONArray.fromObject(depsAndEmployees);
+        System.out.println(jsonArray);
+        try {
+            response.getWriter().print(jsonArray);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

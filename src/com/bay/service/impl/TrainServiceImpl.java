@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by baymax on on 2017-11-03 14:17.
@@ -34,8 +35,6 @@ public class TrainServiceImpl implements TrainService {
                 TrainRecord trainRecord = new TrainRecord();
                 trainRecord.setEmployeeId(employeeId);
                 trainRecord.setTrainId(trainTid);
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println(trainRecord);
                 boolean b1 = trainRecordDao.addTrainRecord(trainRecord);
                 if(!b1){
                     return "发布失败";
@@ -44,5 +43,25 @@ public class TrainServiceImpl implements TrainService {
             return "发布成功";
         }
         return "发布失败";
+    }
+
+    @Override
+    public List<Train> findTrainListDone(Integer empId) {
+        return   trainDao.findTrainListDone(empId);
+    }
+
+    @Override
+    public List<Train> findTrainListNone(Integer empId) {
+        return trainDao.findTrainListNone(empId);
+    }
+
+    @Override
+    public List<Train> allTrainListDone() {
+        return trainDao.allTrainListDone();
+    }
+
+    @Override
+    public List<Train> allTrainListNone() {
+        return trainDao.allTrainListNone();
     }
 }

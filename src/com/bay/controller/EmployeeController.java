@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -23,7 +22,6 @@ import java.util.List;
  * No cross no  crown.
  */
 @Controller
-//@SessionAttributes({"admin","employee"})
 public class EmployeeController {
     @Resource
     private EmployeeService employeeService;
@@ -44,11 +42,12 @@ public class EmployeeController {
         return "employee/login";
     }
 
-    @RequestMapping(value = "/employeeList", method = RequestMethod.GET)
+    @RequestMapping(value = "/allEmployeeList", method = RequestMethod.GET)
     @ResponseBody
     public void employeeList(HttpServletResponse response) {
         List<Employee> employeeList = employeeService.employeeList();
         JSONArray jsonArray = JSONArray.fromObject(employeeList);
+        System.out.println(jsonArray);
         try {
             response.getWriter().print(jsonArray);
         } catch (IOException e) {
@@ -99,9 +98,32 @@ public class EmployeeController {
             employee.setPassword(new_password);
             return employeeService.updateEmployee(employee);
         }
+    }
 
+    @RequestMapping(value = "/empTurnFormal",method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String empTurnFormal(Integer empId){
+        String info = employeeService.empTurnFormal(empId);
+        return info;
+    }
+
+
+    @RequestMapping(value = "/fireEmployee",method = RequestMethod.GET,produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String fireEmployee(Integer empId){
+        String info = employeeService.fireEmployee(empId);
+        return info;
+    }
+
+
+    @RequestMapping(value = "/changeEmp",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String changeEmp(Employee employee){
+        String info = employeeService.changeEmp(employee);
+        return info;
 
     }
+
 
 
 }

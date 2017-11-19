@@ -13,7 +13,7 @@ public interface ResumeDao {
     boolean updateResume(Resume resume);
     Resume queryResumeById(Integer id);
     Resume reusmeByCid(Integer cId);
-    Resume reusmeCid(Integer cId);
+//    Resume reusmeCid(Integer cId);
 
     Resume reusmeByDrid(Integer drId);
 }

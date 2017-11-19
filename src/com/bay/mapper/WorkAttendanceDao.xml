@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bay.dao.WorkAttendanceDao">
+    <resultMap id="workAttendanceBasicMap" type="WorkAttendance">
+        <id column="WA_ID" property="waId"/>
+        <result column="EMPLOYEE_ID" property="employeeId"/>
+        <result column="ONWORK_TIME" property="onworkTime"/>
+        <result column="OFFWORK_TIME" property="offworkTime"/>
+    </resultMap>
+    <resultMap id="workAttendanceEmpMap" type="WorkAttendance" extends="workAttendanceBasicMap">
+        <association property="employee" javaType="Employee" resultMap="com.bay.dao.EmployeeDao.employeeAllMap"/>
+    </resultMap>
+
+    <insert id="addWorkAttendance" parameterType="WorkAttendance">
+        <selectKey keyProperty="waId" resultType="Integer" order="BEFORE">
+            SELECT aa.nextval FROM dual
+        </selectKey>
+        INSERT INTO HRMS.WORK_ATTENDANCE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="waId != null">WA_ID,</if>
+            <if test="employeeId != null">EMPLOYEE_ID,</if>
+            <if test="onworkTime != null">ONWORK_TIME,</if>
+            <if test="offworkTime != null">OFFWORK_TIME</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="waId != null">#{waId},</if>
+            <if test="employeeId != null">#{employeeId},</if>
+            <if test="onworkTime != null">#{onworkTime},</if>
+            <if test="offworkTime != null">#{offworkTime}</if>
+        </trim>
+    </insert>
+    <update id="updateWorkAttendance" parameterType="WorkAttendance">
+        UPDATE WORK_ATTENDANCE SET OFFWORK_TIME = #{offworkTime}  WHERE WA_ID = #{waId}
+    </update>
+    <select id="queryWorkAttendance" parameterType="WorkAttendance" resultMap="workAttendanceBasicMap">
+        SELECT * FROM WORK_ATTENDANCE WHERE EMPLOYEE_ID = #{employeeId}
+        <if test="onworkTime!= null">and ONWORK_TIME >= #{onworkTime}</if>
+    </select>
+    <select id="workAttendanceListByCurrMonth" parameterType="WorkAttendance" resultMap="workAttendanceBasicMap">
+        select * from WORK_ATTENDANCE WHERE EMPLOYEE_ID = #{employeeId} and ONWORK_TIME >= #{onworkTime}
+    </select>
+    <select id="workAttendanceListByLastMonth" parameterType="WorkAttendance" resultMap="workAttendanceBasicMap">
+        select * from WORK_ATTENDANCE WHERE EMPLOYEE_ID = #{employeeId} and to_char(ONWORK_TIME,'yyyy-mm') = to_char(#{onworkTime},'yyyy-mm')
+    </select>
+    <select id="currentAllEmpWorkAtt" parameterType="WorkAttendance" resultMap="workAttendanceEmpMap">
+        SELECT * FROM WORK_ATTENDANCE wa
+        LEFT JOIN EMPLOYEE e on wa.EMPLOYEE_ID = e.EMP_ID
+        LEFT JOIN POSITION p ON p.POS_ID = e.POSITION_ID
+        LEFT JOIN DEPARTMENT d ON d.DEP_ID = p.DEPARTMENT_ID
+        WHERE wa.ONWORK_TIME >= #{onworkTime}  order by wa.ONWORK_TIME
+    </select>
+    <select id="lastAllEmpWorkAtt"  parameterType="WorkAttendance" resultMap="workAttendanceEmpMap">
+         SELECT * FROM WORK_ATTENDANCE wa
+        LEFT JOIN EMPLOYEE e on wa.EMPLOYEE_ID = e.EMP_ID
+        LEFT JOIN POSITION p ON p.POS_ID = e.POSITION_ID
+        LEFT JOIN DEPARTMENT d ON d.DEP_ID = p.DEPARTMENT_ID
+        WHERE  to_char(wa.ONWORK_TIME,'yyyy-mm') = to_char(#{onworkTime},'yyyy-mm')  order by wa.ONWORK_TIME
+    </select>
+
+
+</mapper>

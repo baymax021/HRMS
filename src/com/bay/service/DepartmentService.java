@@ -23,4 +23,5 @@ public interface DepartmentService {
 
     List<Department>  depEmpExistList();
 
+    List<Department> depsAndEmployees();
 }

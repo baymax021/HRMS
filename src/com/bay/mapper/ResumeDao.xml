@@ -34,8 +34,13 @@
     </insert>
 
 
-    <select id="queryResumeById" parameterType="Integer" resultMap="resumeBasicMap">
-        SELECT * FROM HRMS.RESUME WHERE RID=#{rid}
+    <select id="queryResumeById" parameterType="Integer" resultMap="resumeAllMap">
+        SELECT * FROM HRMS.RESUME r
+        LEFT JOIN HRMS.BASIC_INFO b ON b.RESUME_ID =r.RID
+        LEFT JOIN HRMS.EDUCATION edu ON edu.RESUME_ID = r.RID
+        LEFT JOIN HRMS.WORK_EXPERIENCE we ON we.RESUME_ID =r.RID
+        LEFT JOIN HRMS.PROJECT_EXPERIENCE pe ON pe.RESUME_ID =r.RID
+        WHERE r.rid=#{rid}
     </select>
     <select id="reusmeByCid" parameterType="Integer" resultMap="resumeBasicMap">
         SELECT * FROM HRMS.RESUME WHERE CANDIDATE_ID=#{candidateId}

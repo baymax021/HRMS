@@ -18,8 +18,16 @@
     <link rel="stylesheet" href="css/mystyle.css" charset="UTF-8">
     <script src="js/jquery-3.0.0.js" charset="UTF-8" type="text/javascript"></script>
     <script src="js/myjs.js" charset="UTF-8" type="text/javascript"></script>
+    <style>
+        .p_body{
+            background: url("image/bg.jpg");
+            background-size: 100%;
+            height: 560px;
+        }
+    </style>
+
 </head>
-<body>
+<body class="p_body">
 <div id="main_header"><span id="header_left">欢迎登录人力资源管理平台</span> <span class="header_right">你好,管理员 &nbsp;<a href=""
                                                                                                     class="header_right">退出</a></span>
 </div>
@@ -29,20 +37,7 @@
         <div id="unview"></div>
         <ul class="menu_big">
             <li class="menu_dh">
-                <div class="first_menu" id="zz">组织架构
-                    <div class="xlys" >
-                        <hr class="three_line" >
-                        <hr class="three_line" >
-                        <hr class="three_line" >
-                    </div>
-                </div>
-                <ul class="second_menu" id="zz_detail">
-
-                </ul>
-            </li>
-
-            <li class="menu_dh">
-                <div class="first_menu" id="rs">人事管理
+                <div class="first_menu" id="rs" >人事管理
                     <div class="xlys" >
                         <hr class="three_line" >
                         <hr class="three_line" >
@@ -63,7 +58,8 @@
                     </div>
                 </div>
                 <ul class="second_menu" id="kq_detail">
-
+                    <li class="third_menu" id="kq_current">当月考勤记录</li>
+                    <li class="third_menu" id="kq_lastMonth">上月考勤记录</li>
                 </ul>
             </li>
             <li class="menu_dh">
@@ -75,7 +71,9 @@
                     </div>
                 </div>
                 <ul class="second_menu" id="xc_detail">
-
+                    <li class="third_menu" id="xc_last">最近一个月薪资</li>
+                    <li class="third_menu" id="xc_mx">结算工资</li>
+                    <li class="third_menu" id="xc_fy">复议</li>
                 </ul>
             </li>
             <li class="menu_dh">
@@ -87,7 +85,8 @@
                     </div>
                 </div>
                 <ul class="second_menu" id="px_detail">
-                    <li class="third_menu" id="query_px">查看培训记录</li>
+                    <li class="third_menu" id="px_over">查看已结束培训</li>
+                    <li class="third_menu" id="px_not_start">查看未开始培训</li>
                     <li class="third_menu" id="create_px">发布培训通知</li>
                 </ul>
             </li>

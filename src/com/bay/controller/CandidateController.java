@@ -1,11 +1,9 @@
 package com.bay.controller;
 
 import com.bay.model.Candidate;
-import com.bay.model.Education;
-import com.bay.model.ProjectExperience;
-import com.bay.model.Resume;
+
 import com.bay.service.CandidateService;
-import net.sf.json.JSONObject;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.annotation.Resource;
-import java.awt.event.ItemEvent;
-import java.util.List;
 
 /**
  *

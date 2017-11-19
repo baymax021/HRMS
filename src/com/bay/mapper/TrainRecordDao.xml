@@ -8,15 +8,41 @@
         <result column="CREATE_TIME" property="createTime"/>
     </resultMap>
     <resultMap id="trainRecordDetailMap" type="TrainRecord" extends="trainRecordBasicMap">
+        <association property="employee" javaType="Employee" column="EMPLOYEE_ID" select="com.bay.dao.EmployeeDao.findEmployeeById"/>
+        <association property="train" javaType="Train" resultMap="com.bay.dao.TrainDao.trainBasicMap"/>
+    </resultMap>
+
+    <resultMap id="trainRecordDetailMap1" type="TrainRecord" extends="trainRecordBasicMap">
         <association property="employee" javaType="Employee" resultMap="com.bay.dao.EmployeeDao.employeeBasicMap"/>
         <association property="train" javaType="Train" resultMap="com.bay.dao.TrainDao.trainBasicMap"/>
     </resultMap>
+
+
     <insert id="addTrainRecord" parameterType="TrainRecord">
         <selectKey keyProperty="trId" order="BEFORE" resultType="Integer">
           SELECT aa.nextval FROM dual
         </selectKey>
         INSERT INTO HRMS.TRAIN_RECORD(TR_ID, EMPLOYEE_ID, TRAIN_ID) VALUES (#{trId},#{employeeId},#{trainId})
     </insert>
+    <select id="trainRecordListByTid" parameterType="Integer" resultMap="trainRecordDetailMap">
+        SELECT * FROM TRAIN_RECORD WHERE TRAIN_ID = #{trainId}
+    </select>
+
+    <!--<select id="findTrainListDone" resultMap="com.bay.dao.TrainDao.trainDetailMap">-->
+        <!--select t.* from TRAIN t-->
+        <!--LEFT JOIN TRAIN_RECORD tr ON t.TID = tr.TRAIN_ID-->
+        <!--LEFT JOIN EMPLOYEE e ON e.EMP_ID = tr.EMPLOYEE_ID-->
+        <!--WHERE to_date(replace(t.T_END_TIME,'T'),'yyyy-MM-dd HH24:MI') &lt; CURRENT_DATE-->
+        <!--<if test="empId != null">AND e.EMP_ID=#{empId}</if>-->
+
+    <!--</select>-->
+
+    <!--<select id="findTrainListNone" resultMap="com.bay.dao.TrainDao.trainDetailMap">-->
+         <!--select t.* from TRAIN t-->
+        <!--LEFT JOIN TRAIN_RECORD tr ON t.TID = tr.TRAIN_ID-->
+        <!--LEFT JOIN EMPLOYEE e ON e.EMP_ID = tr.EMPLOYEE_ID-->
+        <!--WHERE to_date(replace(t.T_START_TIME,'T'),'yyyy-MM-dd HH24:MI') > CURRENT_DATE AND e.EMP_ID=#{empId}-->
+    <!--</select>-->
 
 
 </mapper>

@@ -17,11 +17,12 @@
     <title>当前时间</title>
 </head>
 <body>
-<div id="currentTime" style="width: auto;height: 300px;font-size: 100px">
+<div id="currentTime" style="width: auto;height: 200px;font-size: 50px">
     <script>
-        var s= new Date()
-        $("#currentTime").html(s)
-        console.log(s);
+        document.getElementById('currentTime').innerHTML = new Date().toLocaleString() + '星期' + '日一二三四五六'.charAt(new Date().getDay());
+        setInterval(
+            "document.getElementById('currentTime').innerHTML = new Date().toLocaleString() + '星期' + '日一二三四五六'.charAt(new Date().getDay());", 1000
+        )
     </script>
 </div>
 </body>

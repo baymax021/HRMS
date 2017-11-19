@@ -62,8 +62,12 @@ public class ResumeServiceImpl implements ResumeService {
     }
 
     @Override
-    public Resume reusmeByCid(Integer cId) {
-        return resumeDao.reusmeByCid(cId);
+    public String reusmeByCid(Integer cId) {
+        Resume resume = resumeDao.reusmeByCid(cId);
+        if (resume == null) {
+            return "N";
+        }
+        return "Y";
     }
 
     @Override

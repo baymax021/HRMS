@@ -16,4 +16,10 @@ public interface EmployeeService {
     String  updateEmployee(Employee employee);
 
     Employee queryEmployeeDetail(Integer empId);
+
+    String empTurnFormal(Integer empId);
+
+    String fireEmployee(Integer empId);
+
+    String changeEmp(Employee employee);
 }

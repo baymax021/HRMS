@@ -13,11 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import javax.annotation.Resource;
-
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -56,16 +54,19 @@ public class ResumeController {
         return "candidate/main";
     }
 
-    @RequestMapping(value = "/my_resume", method = RequestMethod.POST)
+    @RequestMapping(value = "/my_resume", method ={RequestMethod.POST,RequestMethod.GET})
     @ResponseBody
-    public void myResume(Integer cid, HttpServletResponse response) {
-        Resume resume = resumeService.reusmeByCid(cid);
+    public void myResume(Integer rid,HttpServletResponse response) {
+        Resume resume = resumeService.queryResumeById(rid);
         JSONObject jsonObject = JSONObject.fromObject(resume);
         try {
             response.getWriter().print(jsonObject);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
     }
 
     @RequestMapping(value = "/query_resume", method = RequestMethod.GET)

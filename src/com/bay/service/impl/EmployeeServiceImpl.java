@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -66,6 +67,40 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee queryEmployeeDetail(Integer empId) {
         return employeeDao.queryEmployeeDetail(empId);
+    }
+
+    @Override
+    public String empTurnFormal(Integer empId) {
+        Employee employee = new Employee();
+        employee.setEmpStatus(Employee.EMP_STATUS_ON);
+        employee.setEmpId(empId);
+        boolean b = employeeDao.updateEmployee(employee);
+        if(b){
+            return "操作成功";
+        }
+        return "操作失败";
+    }
+
+    @Override
+    public String fireEmployee(Integer empId) {
+        Employee employee = new Employee();
+        employee.setEmpStatus(Employee.EMP_STATUS_OFF);
+        employee.setDimissionTime(new Timestamp(System.currentTimeMillis()));
+        employee.setEmpId(empId);
+        boolean b = employeeDao.updateEmployee(employee);
+        if(b){
+            return "操作成功";
+        }
+        return "操作失败";
+    }
+
+    @Override
+    public String changeEmp(Employee employee) {
+        boolean b = employeeDao.updateEmployee(employee);
+        if(b){
+            return "换岗成功";
+        }
+        return "换岗失败";
     }
 
 }

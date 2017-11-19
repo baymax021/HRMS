@@ -99,5 +99,10 @@ public class DepartmentServiceImpl implements DepartmentService {
         return departmentDao.depEmpExistList();
     }
 
+    @Override
+    public List<Department> depsAndEmployees() {
+        return departmentDao.depsAndEmployees();
+    }
+
 
 }

@@ -20,34 +20,68 @@
 }
 
 #left_win {
-    border: 1px black solid;
-    padding: 10px 5px 5px 0px;
+    border: 1px #b0b0b0 solid;
+    padding: 10px 2px 5px 0px;
     width: 13%;
     height: 100%;
     float: left;
 }
 
 #right_win {
-    border: 1px black solid;
-    padding: 10px 5px 5px 10px;
+    border: 1px #b0b0b0 solid;
+    padding: 10px 2px 5px 10px;
     width: 85%;
     height: 100%;
     float: right;
 }
 
 #down {
-    border: 1px black solid;
     width: 100%;
     height: auto;
+}
+
+#welcome {
+    color: white;
+    margin-left: 100px;
+    font-size: 65px;
+    font-family: RomanS;
+    font-style: italic;
+}
+
+.relo {
+    text-align: left;
+    display: inline-block;
+    width: 80px;
+}
+
+.jl {
+    padding: 5px 30px 5px 30px;
+}
+
+#candRL {
+    background-color: rgba(27, 131, 198, 0.78);
+    border-radius: 175px;
+    margin-top: 48px;
+    margin-left: 820px;
+    padding: 80px 0 0 40px;
+    width: 270px;
+    height: 240px;
+    text-align: left;
+}
+
+#registerOrLogin {
+    margin: auto;
+    padding: 10px;
+    width: 200px;
+    height: 150px;
+    text-align: left;
 }
 
 .first_menu {
     font-size: 18px;
     color: white;
-    border: 1px #d0d0d0 solid;
-    border-radius: 5px;
     background-color: #313290;
-    margin: 0px;
+    margin: 0 0 2px 0;
     text-align: left;
     padding: 5px 0px 5px 20px;
     width: auto;
@@ -56,7 +90,7 @@
 .second_menu {
     list-style: none;
     margin: 0px;
-    padding: 0 ;
+    padding: 0;
     display: none;
 
 }
@@ -76,8 +110,26 @@
     margin: 0;
 }
 
+.need {
+    color: red;
+}
+
+h3 {
+    margin: 5px;
+    color: black;
+}
+
+span.res_bas {
+    margin-left: 20px;
+    display: inline-block;
+    width: 150px;
+}
+
+
+
 table {
     width: 100%;
+    text-align: center;
 }
 
 th {
@@ -91,15 +143,34 @@ th, td {
     text-align: center;
 }
 
-.xlys{
+.zpxx,.empinfo,.salary {
+    color: #000000;
+    background-color: rgba(2, 46, 215, 0.2);
+}
+
+.sendresume {
+    color: rgba(7, 255, 43, 0.94);
+    background-color: rgba(30, 68, 117, 0.8);
+}
+
+#add_resume {
+    /*display: block;*/
+    font-size: 20px;
+    background-color: rgba(38, 80, 90, 0.8);
+    padding: 5px 30px ;
+    border-radius: 3px;
+}
+
+.xlys {
     height: auto;
     width: 22px;
     float: right;
     padding-right: 15px;
 }
-.three_line{
+
+.three_line {
     list-style: none;
-    margin:  5px 0;
+    margin: 5px 0;
 }
 
 .dep {
@@ -128,23 +199,23 @@ th, td {
 /*}*/
 
 .oper, .depId {
-    background-color: #285c96;
+    background-color: rgba(2, 46, 215, 0.2);
 }
 
 .depName {
-    background-color: rgba(38, 86, 143, 0.43);
+    background-color: rgba(2, 46, 215, 0.2);
 }
 
 .posId {
-    background-color: rgba(36, 79, 133, 0.78);
+    background-color: rgba(2, 46, 215, 0.0);
 }
 
 .posName {
-    background-color: rgba(56, 150, 226, 0.78);
+    background-color: rgba(2, 46, 215, 0.0);
 }
 
 .depOper {
-    background-color: rgba(38, 0, 243, 0.19);
+    background-color: rgba(38, 0, 255, 0.05);
 }
 
 .posNone {
@@ -165,23 +236,12 @@ th, td {
     z-index: -1;
 }
 
-/*ul{*/
-/*list-style: none;*/
-/*float: left;*/
-/*margin: 0;*/
-/*padding: 0;*/
-/*}*/
-/*li{*/
-/*border: 0px solid black;*/
-/*width: 100px;*/
-/*text-align: center;*/
-/*list-style: none;*/
-/*float: left;*/
-/*margin: 0;*/
-/*padding: 0;*/
-/*}*/
-
+.in{
+    width: 200px;
+    display:inline-block;
+}
 /*新增职位弹窗CSS样式*/
+
 .in1 {
     width: 100px;
     text-align: left;
@@ -268,7 +328,7 @@ th, td {
     text-align: center;
 }
 
-.depId,.oper,.depName {
+.depId, .oper, .depName {
 
     border: 0px solid black;
     width: 220px;
@@ -332,34 +392,47 @@ th, td {
     padding: 1px 2px;
 }
 
-.res_title{
-    padding: 5px  20px  ;
+.res_title {
+    padding: 5px 20px;
     font-size: 22px;
     background-color: #181a74;
     color: white;
 }
-.detail_info{
+
+.detail_info {
     background-color: rgba(61, 122, 217, 0.85);
 
 }
-.user_info{
+
+.user_info {
     background-color: rgba(158, 161, 217, 0.85);
 }
-.user_photo{
+
+.user_photo {
     background-color: rgba(176, 179, 238, 0.53);
     width: 200px;
     height: auto;
 }
-.pxObj{
+
+.pxObj {
     height: 280px;
-    margin: 5px 15px ;
+    margin: 5px 15px;
     width: 180px;
     padding: 10px;
     border: 1px solid black;
     border-radius: 2px;
     float: left;
+    overflow-y: auto;
 
 }
-.pxSub{
+
+.pxSub {
     clear: both;
+}
+.resume{
+    font-size: 20px;
+    background-color: rgba(38, 80, 90, 0.8);
+    padding: 5px 30px ;
+    border-radius: 3px;
+    margin-right: 50px;
 }

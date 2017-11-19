@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bay.dao.ObjectionDao">
+    <resultMap id="objectionBasicMap" type="Objection">
+        <id column="OB_ID" property="obId"/>
+        <result column="SALARY_ID" property="salaryId"/>
+        <result column="CONTENT" property="content"/>
+        <result column="RESULT" property="result"/>
+        <result  column="STATUS" property="status"/>
+    </resultMap>
+    <resultMap id="objectionAndSalMap" type="Objection" extends="objectionBasicMap">
+        <association property="salary" javaType="Salary" resultMap="com.bay.dao.SalaryDao.salaryAndEmpMap"/>
+    </resultMap>
+
+    <insert id="addObj" parameterType="Objection">
+        <selectKey keyProperty="obId" order="BEFORE" resultType="Integer">
+            SELECT aa.nextval FROM dual
+        </selectKey>
+        INSERT INTO OBJECTION
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="obId != null">OB_ID,</if>
+            <if test="salaryId != null">SALARY_ID,</if>
+            <if test="content != null">CONTENT,</if>
+            <if test="result != null">RESULT,</if>
+            <if test="status != null">STATUS</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="obId != null">#{obId},</if>
+            <if test="salaryId != null">#{salaryId},</if>
+            <if test="content != null">#{content},</if>
+            <if test="result != null">#{result},</if>
+            <if test="status != null">#{status}</if>
+        </trim>
+    </insert>
+    <select id="myObj" resultMap="objectionBasicMap">
+        SELECT o.* FROM OBJECTION o,SALARY s
+        WHERE o.SALARY_ID = s.S_ID AND s.EMPLOYEE_ID = #{employeeId}
+    </select>
+</mapper>

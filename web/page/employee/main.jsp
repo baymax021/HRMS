@@ -17,85 +17,88 @@
     <link rel="stylesheet" href="css/mystyle.css" charset="UTF-8">
     <script src="js/jquery-3.0.0.js" charset="UTF-8" type="text/javascript"></script>
     <script src="js/myjs.js" charset="UTF-8" type="text/javascript"></script>
+    <style>
+        .p_body {
+            background: url("image/bg.jpg");
+            background-size: 100%;
+            height: 560px;
+        }
+    </style>
+    <script>
+        window.onload = $(function () {
+            $("#main").click();
 
+        });
+    </script>
 </head>
-<body>
-<div id="main_header"><span id="header_left">欢迎登录人力资源管理平台</span> <span class="header_right">你好,${sessionScope.employee.realName}&nbsp;<a href=""
-                                                                                                    class="header_right">退出</a></span>
+<body class="p_body">
+<div id="main_header"><span id="header_left">欢迎登录人力资源管理平台</span> <span
+        class="header_right">你好,${sessionScope.employee.realName}&nbsp;<a href=""
+                                                                          class="header_right">退出</a></span>
 </div>
+<div id="unview"></div>
+<input hidden id="empId" value="${sessionScope.employee.empId}">
 
 <div id="down">
     <div id="left_win">
-
-        <li class="menu_dh">
-            <div class="first_menu" id="main">首页
-                <div class="xlys" >
-                    <hr class="three_line" >
-                    <hr class="three_line" >
-                    <hr class="three_line" >
-                </div>
-            </div>
-            <ul class="second_menu" >
-            </ul>
-        </li>
         <ul class="menu_big">
             <li class="menu_dh">
-                <div class="first_menu" id="zz">组织架构
-                    <div class="xlys" >
+                <div class="first_menu" id="main">首页
+                    <%--<div class="xlys" >
                         <hr class="three_line" >
                         <hr class="three_line" >
                         <hr class="three_line" >
-                    </div>
+                    </div>--%>
                 </div>
-                <ul class="second_menu" id="zz_detail">
-
+                <ul class="second_menu">
                 </ul>
             </li>
-
             <li class="menu_dh">
-                <div class="first_menu" id="kq">个人考勤
-                    <div class="xlys" >
-                        <hr class="three_line" >
-                        <hr class="three_line" >
-                        <hr class="three_line" >
+                <div class="first_menu" id="kq">我的考勤
+                    <div class="xlys">
+                        <hr class="three_line">
+                        <hr class="three_line">
+                        <hr class="three_line">
                     </div>
                 </div>
                 <ul class="second_menu" id="kq_detail">
-
+                    <li class="third_menu" id="mykq_current">当月考勤记录</li>
+                    <li class="third_menu" id="mykq_lastMonth">上月考勤记录</li>
                 </ul>
             </li>
 
             <li class="menu_dh">
                 <div class="first_menu" id="xc">我的工资条
-                    <div class="xlys" >
-                        <hr class="three_line" >
-                        <hr class="three_line" >
-                        <hr class="three_line" >
+                    <div class="xlys">
+                        <hr class="three_line">
+                        <hr class="three_line">
+                        <hr class="three_line">
                     </div>
                 </div>
                 <ul class="second_menu" id="xc_detail">
-
+                    <li class="third_menu" id="my_xc_mx">工资条</li>
+                    <li class="third_menu" id="my_xc_fy">复议处理</li>
                 </ul>
             </li>
             <li class="menu_dh">
                 <div class="first_menu" id="px">我的培训
-                    <div class="xlys" >
-                        <hr class="three_line" >
-                        <hr class="three_line" >
-                        <hr class="three_line" >
+                    <div class="xlys">
+                        <hr class="three_line">
+                        <hr class="three_line">
+                        <hr class="three_line">
                     </div>
                 </div>
                 <ul class="second_menu" id="px_detail">
-                    <li class="third_menu" id="query_px">查看培训记录</li>
-                    <li class="third_menu" id="create_px">发布培训通知</li>
+                    <li class="third_menu" id="query_px_over">查看已结束培训</li>
+                    <li class="third_menu" id="query_px_none">查看未开始培训</li>
                 </ul>
             </li>
             <li class="menu_dh">
                 <div class="first_menu" id="pc">个人中心
-                    <div class="xlys" >
-                        <hr class="three_line" >
-                        <hr class="three_line" >
-                        <hr class="three_line" >
+                    <div class="xlys">
+                        <hr class="three_line">
+                        <hr class="three_line">
+                        <hr class="three_line">
                     </div>
                 </div>
                 <ul class="second_menu" id="pc_detail">
@@ -109,9 +112,7 @@
 
     </div>
     <div id="right_win" style="overflow-y: auto">
-        <div id="unview"></div>
-        <div id="currentTime" style="width: auto;height: 300px;font-size: 100px">
-        </div>
+
     </div>
 </div>
 </body>

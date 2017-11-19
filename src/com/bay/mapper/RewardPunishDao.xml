@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bay.dao.RewardPunishDao">
+    <resultMap id="rewardPunishBasicMap" type="RewardPunish">
+        <id column="RP_ID" property="rpId"/>
+        <result column="EMPLOYEE_ID" property="employeeId"/>
+        <result column="RP_TYPE" property="rpType"/>
+        <result column="RP_COUNTS" property="rpCounts"/>
+        <result column="CREATE_TIME" property="createTime"/>
+    </resultMap>
+
+    <resultMap id="rewardPunishMap" type="RewardPunish" extends="rewardPunishBasicMap">
+        <result column="num" property="num" />
+    </resultMap>
+
+
+    <select id="findRP" parameterType="java.sql.Timestamp" resultMap="rewardPunishMap">
+        select count(*) as num,RP_TYPE,EMPLOYEE_ID from REWARD_PUNISH  where to_char(CREATE_TIME,'yyyy-MM') = to_char(#{createTime},'yyyy-MM') GROUP BY rp_type,EMPLOYEE_ID
+    </select>
+
+
+
+
+
+</mapper>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bay.dao.SalaryDao">
+    <resultMap id="salaryBasicMap" type="Salary">
+        <id column="S_ID" property="sId"/>
+        <result column="EMPLOYEE_ID" property="employeeId"/>
+        <result column="BASIC_SALARY" property="basicSalary"/>
+        <result column="MERIT_PAY" property="meritPay"/>
+        <result column="SOCIAL_SECURITY" property="socialSecurity"/>
+        <result column="EXTRA_MONEY" property="extraMoney"/>
+        <result column="CREATE_TIME" property="createTime"/>
+    </resultMap>
+    <resultMap id="salaryAndEmpMap" type="Salary" extends="salaryBasicMap">
+        <association property="employee" javaType="Employee" resultMap="com.bay.dao.EmployeeDao.employeeBasicMap"/>
+    </resultMap>
+
+    <insert id="addSalary" parameterType="Salary">
+        <selectKey keyProperty="sId" order="BEFORE" resultType="Integer">
+            SELECT aa.nextval FROM dual
+        </selectKey>
+        INSERT INTO SALARY
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sId != null">S_ID,</if>
+            <if test="employeeId != null">EMPLOYEE_ID,</if>
+            <if test="basicSalary != null">BASIC_SALARY,</if>
+            <if test="meritPay != null">MERIT_PAY,</if>
+            <if test="socialSecurity != null">SOCIAL_SECURITY,</if>
+            <if test="extraMoney != null">EXTRA_MONEY,</if>
+            <if test="createTime != null">CREATE_TIME </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sId != null">#{sId},</if>
+            <if test="employeeId != null">#{employeeId},</if>
+            <if test="basicSalary != null">#{basicSalary},</if>
+            <if test="meritPay != null">#{meritPay},</if>
+            <if test="socialSecurity != null">#{socialSecurity},</if>
+            <if test="extraMoney != null">#{extraMoney},</if>
+            <if test="createTime != null">#{createTime}</if>
+        </trim>
+    </insert>
+    <select id="allSalaryList" parameterType="java.sql.Timestamp" resultMap="salaryAndEmpMap">
+        SELECT * FROM SALARY s,EMPLOYEE e WHERE s.EMPLOYEE_ID = e.EMP_ID AND to_char(s.CREATE_TIME,'yyyy-MM') = to_char(#{createTime},'yyyy-MM') order by s.EMPLOYEE_ID
+    </select>
+    <select id="findSalaryByEmpId" parameterType="Integer" resultMap="salaryAndEmpMap">
+        SELECT * FROM SALARY s,EMPLOYEE e WHERE s.EMPLOYEE_ID = e.EMP_ID AND  s.EMPLOYEE_ID=#{employeeId} order by s.CREATE_TIME DESC
+    </select>
+</mapper>

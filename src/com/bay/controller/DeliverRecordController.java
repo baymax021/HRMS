@@ -57,7 +57,6 @@ public class DeliverRecordController {
     @ResponseBody
     public String update(Integer drId) {
         String s = deliverRecordService.updateDeliverRecord(drId);
-        System.out.println(s+"qqqqqqqqqqqqqqqqqqqqqqqqq");
         return "{\"info\":\""+s+"\"}";
 
 
